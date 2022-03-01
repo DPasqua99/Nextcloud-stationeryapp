@@ -1,0 +1,2847 @@
+/*
+ * @copyright 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @author 2018 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * Vue.js v2.6.14
+ * (c) 2014-2021 Evan You
+ * Released under the MIT License.
+ */
+
+/*! !!../../css-loader/dist/cjs.js!./splitpanes.css */
+
+/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */
+
+/*! !../node_modules/vue-loader/lib/runtime/componentNormalizer.js */
+
+/*! !../vue-loader/lib/runtime/componentNormalizer.js */
+
+/*! -!../node_modules/babel-loader/lib/index.js!../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=script&lang=js& */
+
+/*! -!../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=template&id=7ba5bd90& */
+
+/*! -!../vue-loader/lib/index.js??vue-loader-options!./ArrowRight.vue?vue&type=script&lang=js& */
+
+/*! -!../vue-loader/lib/index.js??vue-loader-options!./Close.vue?vue&type=script&lang=js& */
+
+/*! -!../vue-loader/lib/index.js??vue-loader-options!./DotsHorizontal.vue?vue&type=script&lang=js& */
+
+/*! -!../vue-loader/lib/index.js??vue-loader-options!./Menu.vue?vue&type=script&lang=js& */
+
+/*! -!../vue-loader/lib/index.js??vue-loader-options!./MenuDown.vue?vue&type=script&lang=js& */
+
+/*! -!../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../vue-loader/lib/index.js??vue-loader-options!./ArrowRight.vue?vue&type=template&id=08cbfd82&functional=true& */
+
+/*! -!../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../vue-loader/lib/index.js??vue-loader-options!./Close.vue?vue&type=template&id=3cc2737c&functional=true& */
+
+/*! -!../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../vue-loader/lib/index.js??vue-loader-options!./DotsHorizontal.vue?vue&type=template&id=3174c38c&functional=true& */
+
+/*! -!../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../vue-loader/lib/index.js??vue-loader-options!./Menu.vue?vue&type=template&id=62f6d40b&functional=true& */
+
+/*! -!../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../vue-loader/lib/index.js??vue-loader-options!./MenuDown.vue?vue&type=template&id=23154a4d&functional=true& */
+
+/*! . */
+
+/*! ../../css-loader/dist/runtime/api.js */
+
+/*! ../../utils/class */
+
+/*! ../assert */
+
+/*! ../classes/semver */
+
+/*! ../errors */
+
+/*! ../internal/constants */
+
+/*! ../internal/debug */
+
+/*! ../internal/identifiers */
+
+/*! ../internal/parse-options */
+
+/*! ../internal/re */
+
+/*! ../internals/a-function */
+
+/*! ../internals/a-possible-prototype */
+
+/*! ../internals/add-to-unscopables */
+
+/*! ../internals/advance-string-index */
+
+/*! ../internals/an-object */
+
+/*! ../internals/array-includes */
+
+/*! ../internals/array-iteration */
+
+/*! ../internals/array-method-has-species-support */
+
+/*! ../internals/array-species-create */
+
+/*! ../internals/bind-context */
+
+/*! ../internals/classof */
+
+/*! ../internals/classof-raw */
+
+/*! ../internals/copy-constructor-properties */
+
+/*! ../internals/correct-is-regexp-logic */
+
+/*! ../internals/correct-prototype-getter */
+
+/*! ../internals/create-iterator-constructor */
+
+/*! ../internals/create-non-enumerable-property */
+
+/*! ../internals/create-property */
+
+/*! ../internals/create-property-descriptor */
+
+/*! ../internals/define-iterator */
+
+/*! ../internals/descriptors */
+
+/*! ../internals/document-create-element */
+
+/*! ../internals/dom-iterables */
+
+/*! ../internals/engine-user-agent */
+
+/*! ../internals/engine-v8-version */
+
+/*! ../internals/enum-bug-keys */
+
+/*! ../internals/export */
+
+/*! ../internals/fails */
+
+/*! ../internals/fix-regexp-well-known-symbol-logic */
+
+/*! ../internals/get-built-in */
+
+/*! ../internals/get-substitution */
+
+/*! ../internals/global */
+
+/*! ../internals/has */
+
+/*! ../internals/hidden-keys */
+
+/*! ../internals/html */
+
+/*! ../internals/ie8-dom-define */
+
+/*! ../internals/indexed-object */
+
+/*! ../internals/inspect-source */
+
+/*! ../internals/internal-state */
+
+/*! ../internals/is-array */
+
+/*! ../internals/is-forced */
+
+/*! ../internals/is-object */
+
+/*! ../internals/is-pure */
+
+/*! ../internals/is-regexp */
+
+/*! ../internals/iterators */
+
+/*! ../internals/iterators-core */
+
+/*! ../internals/native-symbol */
+
+/*! ../internals/native-weak-map */
+
+/*! ../internals/not-a-regexp */
+
+/*! ../internals/object-create */
+
+/*! ../internals/object-define-properties */
+
+/*! ../internals/object-define-property */
+
+/*! ../internals/object-get-own-property-descriptor */
+
+/*! ../internals/object-get-own-property-names */
+
+/*! ../internals/object-get-own-property-symbols */
+
+/*! ../internals/object-get-prototype-of */
+
+/*! ../internals/object-keys */
+
+/*! ../internals/object-keys-internal */
+
+/*! ../internals/object-property-is-enumerable */
+
+/*! ../internals/object-set-prototype-of */
+
+/*! ../internals/object-to-string */
+
+/*! ../internals/own-keys */
+
+/*! ../internals/path */
+
+/*! ../internals/redefine */
+
+/*! ../internals/regexp-exec */
+
+/*! ../internals/regexp-exec-abstract */
+
+/*! ../internals/regexp-flags */
+
+/*! ../internals/require-object-coercible */
+
+/*! ../internals/set-global */
+
+/*! ../internals/set-to-string-tag */
+
+/*! ../internals/shared */
+
+/*! ../internals/shared-key */
+
+/*! ../internals/shared-store */
+
+/*! ../internals/string-multibyte */
+
+/*! ../internals/to-absolute-index */
+
+/*! ../internals/to-indexed-object */
+
+/*! ../internals/to-integer */
+
+/*! ../internals/to-length */
+
+/*! ../internals/to-object */
+
+/*! ../internals/to-primitive */
+
+/*! ../internals/to-string-tag-support */
+
+/*! ../internals/uid */
+
+/*! ../internals/use-symbol-as-uid */
+
+/*! ../internals/user-agent */
+
+/*! ../internals/v8-version */
+
+/*! ../internals/well-known-symbol */
+
+/*! ../modules/es.array.iterator */
+
+/*! ../modules/es.regexp.exec */
+
+/*! ../modules/logger/index.js */
+
+/*! ../utils/class */
+
+/*! ../utils/log.js */
+
+/*! ./ */
+
+/*! ./App */
+
+/*! ./App.vue?vue&type=script&lang=js& */
+
+/*! ./App.vue?vue&type=template&id=7ba5bd90& */
+
+/*! ./ArrowRight.vue?vue&type=script&lang=js& */
+
+/*! ./ArrowRight.vue?vue&type=template&id=08cbfd82&functional=true& */
+
+/*! ./Close.vue?vue&type=script&lang=js& */
+
+/*! ./Close.vue?vue&type=template&id=3cc2737c&functional=true& */
+
+/*! ./DotsHorizontal.vue?vue&type=script&lang=js& */
+
+/*! ./DotsHorizontal.vue?vue&type=template&id=3174c38c&functional=true& */
+
+/*! ./Logger */
+
+/*! ./Menu.vue?vue&type=script&lang=js& */
+
+/*! ./Menu.vue?vue&type=template&id=62f6d40b&functional=true& */
+
+/*! ./MenuDown.vue?vue&type=script&lang=js& */
+
+/*! ./MenuDown.vue?vue&type=template&id=23154a4d&functional=true& */
+
+/*! ./ProxyBus */
+
+/*! ./SimpleBus */
+
+/*! ./_DataView */
+
+/*! ./_Hash */
+
+/*! ./_ListCache */
+
+/*! ./_Map */
+
+/*! ./_MapCache */
+
+/*! ./_Promise */
+
+/*! ./_Set */
+
+/*! ./_SetCache */
+
+/*! ./_Stack */
+
+/*! ./_Symbol */
+
+/*! ./_Uint8Array */
+
+/*! ./_WeakMap */
+
+/*! ./_apply */
+
+/*! ./_arrayFilter */
+
+/*! ./_arrayLikeKeys */
+
+/*! ./_arrayPush */
+
+/*! ./_arraySome */
+
+/*! ./_assignMergeValue */
+
+/*! ./_assignValue */
+
+/*! ./_assocIndexOf */
+
+/*! ./_baseAssignValue */
+
+/*! ./_baseCreate */
+
+/*! ./_baseFor */
+
+/*! ./_baseGetAllKeys */
+
+/*! ./_baseGetTag */
+
+/*! ./_baseIsArguments */
+
+/*! ./_baseIsEqual */
+
+/*! ./_baseIsEqualDeep */
+
+/*! ./_baseIsNative */
+
+/*! ./_baseIsTypedArray */
+
+/*! ./_baseKeys */
+
+/*! ./_baseKeysIn */
+
+/*! ./_baseMerge */
+
+/*! ./_baseMergeDeep */
+
+/*! ./_baseRest */
+
+/*! ./_baseSetToString */
+
+/*! ./_baseTimes */
+
+/*! ./_baseUnary */
+
+/*! ./_cacheHas */
+
+/*! ./_cloneArrayBuffer */
+
+/*! ./_cloneBuffer */
+
+/*! ./_cloneTypedArray */
+
+/*! ./_copyArray */
+
+/*! ./_copyObject */
+
+/*! ./_coreJsData */
+
+/*! ./_createAssigner */
+
+/*! ./_createBaseFor */
+
+/*! ./_defineProperty */
+
+/*! ./_equalArrays */
+
+/*! ./_equalByTag */
+
+/*! ./_equalObjects */
+
+/*! ./_freeGlobal */
+
+/*! ./_getAllKeys */
+
+/*! ./_getMapData */
+
+/*! ./_getNative */
+
+/*! ./_getPrototype */
+
+/*! ./_getRawTag */
+
+/*! ./_getSymbols */
+
+/*! ./_getTag */
+
+/*! ./_getValue */
+
+/*! ./_hashClear */
+
+/*! ./_hashDelete */
+
+/*! ./_hashGet */
+
+/*! ./_hashHas */
+
+/*! ./_hashSet */
+
+/*! ./_initCloneObject */
+
+/*! ./_isIndex */
+
+/*! ./_isIterateeCall */
+
+/*! ./_isKeyable */
+
+/*! ./_isMasked */
+
+/*! ./_isPrototype */
+
+/*! ./_listCacheClear */
+
+/*! ./_listCacheDelete */
+
+/*! ./_listCacheGet */
+
+/*! ./_listCacheHas */
+
+/*! ./_listCacheSet */
+
+/*! ./_mapCacheClear */
+
+/*! ./_mapCacheDelete */
+
+/*! ./_mapCacheGet */
+
+/*! ./_mapCacheHas */
+
+/*! ./_mapCacheSet */
+
+/*! ./_mapToArray */
+
+/*! ./_nativeCreate */
+
+/*! ./_nativeKeys */
+
+/*! ./_nativeKeysIn */
+
+/*! ./_nodeUtil */
+
+/*! ./_objectToString */
+
+/*! ./_overArg */
+
+/*! ./_overRest */
+
+/*! ./_root */
+
+/*! ./_safeGet */
+
+/*! ./_setCacheAdd */
+
+/*! ./_setCacheHas */
+
+/*! ./_setToArray */
+
+/*! ./_setToString */
+
+/*! ./_shortOut */
+
+/*! ./_stackClear */
+
+/*! ./_stackDelete */
+
+/*! ./_stackGet */
+
+/*! ./_stackHas */
+
+/*! ./_stackSet */
+
+/*! ./_toSource */
+
+/*! ./classof-raw */
+
+/*! ./clients/WebSocketClient.js */
+
+/*! ./constant */
+
+/*! ./constants */
+
+/*! ./create-token-class */
+
+/*! ./createConsoleLogger */
+
+/*! ./debug */
+
+/*! ./decode */
+
+/*! ./emitter */
+
+/*! ./encode */
+
+/*! ./eq */
+
+/*! ./fails */
+
+/*! ./getCurrentScriptSource.js */
+
+/*! ./identity */
+
+/*! ./implementation */
+
+/*! ./internal/assert/assertion_error */
+
+/*! ./internal/errors */
+
+/*! ./internal/util/comparisons */
+
+/*! ./isArguments */
+
+/*! ./isArray */
+
+/*! ./isArrayLike */
+
+/*! ./isArrayLikeObject */
+
+/*! ./isBuffer */
+
+/*! ./isFunction */
+
+/*! ./isLength */
+
+/*! ./isObject */
+
+/*! ./isObjectLike */
+
+/*! ./isPlainObject */
+
+/*! ./isTypedArray */
+
+/*! ./keys */
+
+/*! ./keysIn */
+
+/*! ./lib/linkify-string */
+
+/*! ./linkify */
+
+/*! ./linkify/core/parser */
+
+/*! ./linkify/core/scanner */
+
+/*! ./linkify/utils/class */
+
+/*! ./linkify/utils/options */
+
+/*! ./log */
+
+/*! ./log-apply-result */
+
+/*! ./log.js */
+
+/*! ./modules/strip-ansi/index.js */
+
+/*! ./named-references */
+
+/*! ./node_modules/vue-hot-reload-api/dist/index.js */
+
+/*! ./node_modules/webpack-dev-server/client/clients/WebSocketClient.js */
+
+/*! ./numeric-unicode-map */
+
+/*! ./overlay.js */
+
+/*! ./parse */
+
+/*! ./plurals */
+
+/*! ./polyfill */
+
+/*! ./regexp-exec */
+
+/*! ./regexp-flags */
+
+/*! ./regexp-sticky-helpers */
+
+/*! ./scopedstorage */
+
+/*! ./shams */
+
+/*! ./shared */
+
+/*! ./shim */
+
+/*! ./socket.js */
+
+/*! ./state */
+
+/*! ./storagebuilder */
+
+/*! ./stubArray */
+
+/*! ./stubFalse */
+
+/*! ./support/isBuffer */
+
+/*! ./support/types */
+
+/*! ./surrogate-pairs */
+
+/*! ./text */
+
+/*! ./toPlainObject */
+
+/*! ./tokens/multi */
+
+/*! ./tokens/text */
+
+/*! ./util */
+
+/*! ./utils/createSocketURL.js */
+
+/*! ./utils/log.js */
+
+/*! ./utils/parseURL.js */
+
+/*! ./utils/reloadApp.js */
+
+/*! ./utils/sendMessage.js */
+
+/*! @babel/runtime/helpers/classCallCheck */
+
+/*! @babel/runtime/helpers/createClass */
+
+/*! @babel/runtime/helpers/defineProperty */
+
+/*! @babel/runtime/helpers/typeof */
+
+/*! @nextcloud/browser-storage */
+
+/*! @nextcloud/event-bus */
+
+/*! @nextcloud/l10n/dist/gettext */
+
+/*! @nextcloud/router */
+
+/*! @nextcloud/vue/dist/Components/ActionButton */
+
+/*! @nextcloud/vue/dist/Components/ActionLink */
+
+/*! @nextcloud/vue/dist/Components/AppContent */
+
+/*! @nextcloud/vue/dist/Components/AppNavigation */
+
+/*! @nextcloud/vue/dist/Components/AppNavigationCounter */
+
+/*! @nextcloud/vue/dist/Components/AppNavigationItem */
+
+/*! @nextcloud/vue/dist/Components/AppSidebar */
+
+/*! @nextcloud/vue/dist/Components/AppSidebarTab */
+
+/*! @nextcloud/vue/dist/Components/Content */
+
+/*! Hammer.JS - v2.0.7 - 2016-04-22
+ * http://hammerjs.github.io/
+ *
+ * Copyright (c) 2016 Jorik Tangelder;
+ * Licensed under the MIT license */
+
+/*! ansi-html-community */
+
+/*! ansi-regex */
+
+/*! assert */
+
+/*! available-typed-arrays */
+
+/*! call-bind */
+
+/*! call-bind/callBound */
+
+/*! console-browserify */
+
+/*! core-js/modules/es.array.concat */
+
+/*! core-js/modules/es.array.filter */
+
+/*! core-js/modules/es.array.map */
+
+/*! core-js/modules/es.object.keys */
+
+/*! core-js/modules/es.object.to-string */
+
+/*! core-js/modules/es.regexp.exec */
+
+/*! core-js/modules/es.regexp.to-string */
+
+/*! core-js/modules/es.string.replace */
+
+/*! core-js/modules/es.string.replace.js */
+
+/*! core-js/modules/es.string.starts-with */
+
+/*! core-js/modules/web.dom-collections.iterator.js */
+
+/*! define-properties */
+
+/*! es-abstract/helpers/getOwnPropertyDescriptor */
+
+/*! es6-object-assign */
+
+/*! events */
+
+/*! foreach */
+
+/*! function-bind */
+
+/*! get-intrinsic */
+
+/*! hammerjs */
+
+/*! has */
+
+/*! has-symbols */
+
+/*! html-entities */
+
+/*! https://mths.be/punycode v1.3.2 by @mathias */
+
+/*! inherits */
+
+/*! is-arguments */
+
+/*! is-generator-function */
+
+/*! is-nan */
+
+/*! is-typed-array */
+
+/*! linkifyjs/string */
+
+/*! lodash.get */
+
+/*! lodash/isEqual */
+
+/*! lodash/merge */
+
+/*! node-gettext */
+
+/*! object-is */
+
+/*! object-keys */
+
+/*! popper.js */
+
+/*! process/browser.js */
+
+/*! punycode */
+
+/*! querystring */
+
+/*! semver/functions/major */
+
+/*! semver/functions/valid */
+
+/*! splitpanes */
+
+/*! splitpanes/dist/splitpanes.css */
+
+/*! strip-ansi */
+
+/*! tapable/lib/SyncBailHook */
+
+/*! url */
+
+/*! util */
+
+/*! util/ */
+
+/*! v-click-outside */
+
+/*! v-tooltip */
+
+/*! vue */
+
+/*! vue-material-design-icons/ArrowRight */
+
+/*! vue-material-design-icons/Close */
+
+/*! vue-material-design-icons/DotsHorizontal */
+
+/*! vue-material-design-icons/Menu */
+
+/*! vue-material-design-icons/MenuDown */
+
+/*! vue-resize */
+
+/*! webpack/hot/emitter.js */
+
+/*! webpack/hot/log.js */
+
+/*! webpack/lib/logging/runtime.js */
+
+/*! which-typed-array */
+
+/*!*********************!*\
+  !*** ./src/App.vue ***!
+  \*********************/
+
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+
+/*!*********************************!*\
+  !*** ./node_modules/url/url.js ***!
+  \*********************************/
+
+/*!**********************************!*\
+  !*** ./node_modules/url/util.js ***!
+  \**********************************/
+
+/*!***********************************!*\
+  !*** ./node_modules/lodash/eq.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./node_modules/util/util.js ***!
+  \***********************************/
+
+/*!*************************************!*\
+  !*** ./node_modules/is-nan/shim.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./node_modules/lodash/_Map.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./node_modules/lodash/_Set.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./node_modules/lodash/keys.js ***!
+  \*************************************/
+
+/*!**************************************!*\
+  !*** ./node_modules/is-nan/index.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./node_modules/lodash/_Hash.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./node_modules/lodash/_root.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./node_modules/lodash/merge.js ***!
+  \**************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/events/events.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/foreach/index.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/has/src/index.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/lodash/_Stack.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/lodash/_apply.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/lodash/keysIn.js ***!
+  \***************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/lodash/_Symbol.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/lodash/_getTag.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/lodash/isArray.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/lodash/isEqual.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./node_modules/object-is/shim.js ***!
+  \****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/call-bind/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/hammerjs/hammer.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/is-nan/polyfill.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_Promise.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_WeakMap.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_baseFor.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_hashGet.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_hashHas.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_hashSet.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_isIndex.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_overArg.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_safeGet.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/constant.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/identity.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isBuffer.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isLength.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isObject.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/object-is/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/webpack/hot/log.js ***!
+  \*****************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/linkifyjs/string.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash.get/index.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_DataView.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_MapCache.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_SetCache.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_baseKeys.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_baseRest.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_cacheHas.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_getValue.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_isMasked.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_nodeUtil.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_overRest.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_shortOut.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_stackGet.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_stackHas.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_stackSet.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_toSource.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/stubArray.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/lodash/stubFalse.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/strip-ansi/index.js ***!
+  \******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/has-symbols/index.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/has-symbols/shams.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_ListCache.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_arrayPush.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_arraySome.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_baseMerge.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_baseTimes.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_baseUnary.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_copyArray.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_getNative.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_getRawTag.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_hashClear.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_isKeyable.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/isFunction.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/object-keys/index.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/querystring/index.js ***!
+  \*******************************************/
+
+/*!********************************************!*\
+  !*** ./client-src/modules/logger/index.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/is-arguments/index.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_Uint8Array.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_baseCreate.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_baseGetTag.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_baseKeysIn.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_copyObject.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_coreJsData.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_equalByTag.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_freeGlobal.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_getAllKeys.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_getMapData.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_getSymbols.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_hashDelete.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_mapToArray.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_nativeKeys.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_setToArray.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_stackClear.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/isArguments.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/lodash/isArrayLike.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/object-is/polyfill.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/querystring/decode.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/querystring/encode.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./node_modules/util/support/types.js ***!
+  \********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/assert/build/assert.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/call-bind/callBound.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/function-bind/index.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/get-intrinsic/index.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_arrayFilter.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_assignValue.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_baseIsEqual.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_cloneBuffer.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_equalArrays.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_isPrototype.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_mapCacheGet.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_mapCacheHas.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_mapCacheSet.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_setCacheAdd.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_setCacheHas.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_setToString.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/_stackDelete.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/isObjectLike.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/isTypedArray.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/webpack/hot/emitter.js ***!
+  \*********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/is-typed-array/index.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_assocIndexOf.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_baseIsNative.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_equalObjects.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_getPrototype.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_listCacheGet.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_listCacheHas.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_listCacheSet.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_nativeCreate.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/_nativeKeysIn.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/isPlainObject.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/lodash/toPlainObject.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/App.vue?vue&type=script&lang=js& ***!
+  \**********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/core-js/internals/has.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/core-js/internals/uid.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/is-nan/implementation.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_arrayLikeKeys.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_baseMergeDeep.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_createBaseFor.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/lodash/_mapCacheClear.js ***!
+  \***********************************************/
+
+/*!************************************************!*\
+  !*** ./client-src/modules/strip-ansi/index.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/html.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/core-js/internals/path.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_baseGetAllKeys.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_createAssigner.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_defineProperty.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_isIterateeCall.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_listCacheClear.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_mapCacheDelete.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_objectToString.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/webpack/hot/dev-server.js ***!
+  \************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/core-js/internals/fails.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/define-properties/index.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/es6-object-assign/index.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/html-entities/lib/index.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_baseAssignValue.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_baseIsArguments.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_baseIsEqualDeep.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_baseSetToString.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_cloneTypedArray.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_initCloneObject.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_listCacheDelete.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/object-keys/isArguments.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/which-typed-array/index.js ***!
+  \*************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/console-browserify/index.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/export.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/global.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/core-js/internals/shared.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/lodash/_assignMergeValue.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/lodash/_baseIsTypedArray.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/lodash/_cloneArrayBuffer.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/lodash/isArrayLikeObject.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/node-gettext/lib/gettext.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/node-gettext/lib/plurals.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/object-is/implementation.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/vue/dist/vue.runtime.esm.js ***!
+  \**************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/ansi-html-community/index.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/classof.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/core-js/internals/is-pure.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/inherits/inherits_browser.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/popper.js/dist/esm/popper.js ***!
+  \***************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/@nextcloud/l10n/dist/index.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/own-keys.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/core-js/internals/redefine.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/object-keys/implementation.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/webpack/lib/logging/Logger.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/App.vue?vue&type=template&id=7ba5bd90& ***!
+  \****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/an-object.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-forced.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/is-object.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/iterators.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/to-length.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/core-js/internals/to-object.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/is-generator-function/index.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/splitpanes/dist/splitpanes.css ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/webpack/lib/logging/runtime.js ***!
+  \*****************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/@nextcloud/l10n/dist/gettext.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/@nextcloud/router/dist/index.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/assert/build/internal/errors.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/available-typed-arrays/index.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/set-global.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/shared-key.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/core-js/internals/to-integer.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/function-bind/implementation.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify-string.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/util/support/isBufferBrowser.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/v-tooltip/dist/v-tooltip.esm.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/webpack/hot/log-apply-result.js ***!
+  \******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./client-src/modules/logger/SyncBailHookFake.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/classof-raw.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/descriptors.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/hidden-keys.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/object-keys.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-exec.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/vue-hot-reload-api/dist/index.js ***!
+  \*******************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/get-built-in.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-flags.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/shared-store.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/internals/to-primitive.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/vue-resize/dist/vue-resize.esm.js ***!
+  \********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/dist/index.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/dom-iterables.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/enum-bug-keys.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/native-symbol.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/core-js/internals/object-create.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/Menu.vue ***!
+  \*********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/array-includes.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/ie8-dom-define.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/indexed-object.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/inspect-source.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/internal-state.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/internals/iterators-core.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/core/state.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/Close.vue ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/socket.js ***!
+  \**********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/define-iterator.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/internals/native-weak-map.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.array.iterator.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/core-js/modules/es.string.replace.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/html-entities/lib/surrogate-pairs.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/core/parser.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/utils/class.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/splitpanes/dist/splitpanes.common.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/overlay.js ***!
+  \***********************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/dist/ProxyBus.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/internals/get-substitution.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-to-string.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/internals/string-multibyte.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/html-entities/lib/named-references.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/core/scanner.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/url/node_modules/punycode/punycode.js ***!
+  \************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/dist/SimpleBus.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-user-agent.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/engine-v8-version.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/set-to-string-tag.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-absolute-index.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-indexed-object.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/use-symbol-as-uid.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/internals/well-known-symbol.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.object.to-string.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.regexp.to-string.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/utils/options.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/MenuDown.vue ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/utils/log.js ***!
+  \*************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./node_modules/core-js/internals/add-to-unscopables.js ***!
+  \**************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/dist/index.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/html-entities/lib/numeric-unicode-map.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/ArrowRight.vue ***!
+  \***************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/Content.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/assert/build/internal/util/comparisons.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/a-possible-prototype.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/advance-string-index.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-keys-internal.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-exec-abstract.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/core/tokens/text.js ***!
+  \****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/internals/regexp-sticky-helpers.js ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/core-js/internals/to-string-tag-support.js ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/core/tokens/multi.js ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/webpack/lib/logging/createConsoleLogger.js ***!
+  \*****************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-define-property.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/strip-ansi/node_modules/ansi-regex/index.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/v-click-outside/dist/v-click-outside.umd.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/utils/parseURL.js ***!
+  \******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/ActionLink.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppContent.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppSidebar.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/document-create-element.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-prototype-of.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-set-prototype-of.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/DotsHorizontal.vue ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/utils/reloadApp.js ***!
+  \*******************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/correct-prototype-getter.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-define-properties.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/internals/require-object-coercible.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/ActionButton.js ***!
+  \*********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/utils/sendMessage.js ***!
+  \*********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppNavigation.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppSidebarTab.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/assert/build/internal/assert/assertion_error.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-property-descriptor.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/core-js/modules/web.dom-collections.iterator.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/es-abstract/helpers/getOwnPropertyDescriptor.js ***!
+  \**********************************************************************/
+
+/*!***********************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/dist/scopedstorage.js ***!
+  \***********************************************************************/
+
+/*!***********************************************************************!*\
+  !*** ./node_modules/core-js/internals/copy-constructor-properties.js ***!
+  \***********************************************************************/
+
+/*!***********************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-iterator-constructor.js ***!
+  \***********************************************************************/
+
+/*!************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/dist/storagebuilder.js ***!
+  \************************************************************************/
+
+/*!************************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/modules/logger/index.js ***!
+  \************************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-names.js ***!
+  \*************************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-property-is-enumerable.js ***!
+  \*************************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/utils/createSocketURL.js ***!
+  \*************************************************************************/
+
+/*!**************************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppNavigationItem.js ***!
+  \**************************************************************************/
+
+/*!**************************************************************************!*\
+  !*** ./node_modules/core-js/internals/create-non-enumerable-property.js ***!
+  \**************************************************************************/
+
+/*!***************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-symbols.js ***!
+  \***************************************************************************/
+
+/*!***************************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/clients/WebSocketClient.js ***!
+  \***************************************************************************/
+
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+
+/*!****************************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/modules/strip-ansi/index.js ***!
+  \****************************************************************************/
+
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@nextcloud/vue/dist/Components/AppNavigationCounter.js ***!
+  \*****************************************************************************/
+
+/*!******************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/internal/re.js ***!
+  \******************************************************************************/
+
+/*!******************************************************************************!*\
+  !*** ./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js ***!
+  \******************************************************************************/
+
+/*!******************************************************************************!*\
+  !*** ./node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
+  \******************************************************************************/
+
+/*!******************************************************************************!*\
+  !*** ./node_modules/linkifyjs/lib/linkify/core/tokens/create-token-class.js ***!
+  \******************************************************************************/
+
+/*!********************************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/utils/getCurrentScriptSource.js ***!
+  \********************************************************************************/
+
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/classes/semver.js ***!
+  \*********************************************************************************/
+
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/internal/debug.js ***!
+  \*********************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/functions/major.js ***!
+  \**********************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/functions/parse.js ***!
+  \**********************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/functions/valid.js ***!
+  \**********************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/v-tooltip/node_modules/@babel/runtime/helpers/esm/typeof.js ***!
+  \**********************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/Menu.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+
+/*!***********************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/Close.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/internal/constants.js ***!
+  \*************************************************************************************/
+
+/*!**************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/MenuDown.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/has.js ***!
+  \***************************************************************************************/
+
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/uid.js ***!
+  \***************************************************************************************/
+
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/internal/identifiers.js ***!
+  \***************************************************************************************/
+
+/*!***************************************************************************************!*\
+  !*** ./node_modules/v-tooltip/node_modules/@babel/runtime/helpers/esm/createClass.js ***!
+  \***************************************************************************************/
+
+/*!****************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/path.js ***!
+  \****************************************************************************************/
+
+/*!****************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/ArrowRight.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/fails.js ***!
+  \*****************************************************************************************/
+
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/event-bus/node_modules/semver/internal/parse-options.js ***!
+  \*****************************************************************************************/
+
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/export.js ***!
+  \******************************************************************************************/
+
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/global.js ***!
+  \******************************************************************************************/
+
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/shared.js ***!
+  \******************************************************************************************/
+
+/*!******************************************************************************************!*\
+  !*** ./node_modules/v-tooltip/node_modules/@babel/runtime/helpers/esm/classCallCheck.js ***!
+  \******************************************************************************************/
+
+/*!******************************************************************************************!*\
+  !*** ./node_modules/v-tooltip/node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
+  \******************************************************************************************/
+
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/is-pure.js ***!
+  \*******************************************************************************************/
+
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/splitpanes/dist/splitpanes.css ***!
+  \*******************************************************************************************/
+
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/is-array.js ***!
+  \********************************************************************************************/
+
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/own-keys.js ***!
+  \********************************************************************************************/
+
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/redefine.js ***!
+  \********************************************************************************************/
+
+/*!********************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/DotsHorizontal.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/an-object.js ***!
+  \*********************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/is-forced.js ***!
+  \*********************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/is-object.js ***!
+  \*********************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/is-regexp.js ***!
+  \*********************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/to-length.js ***!
+  \*********************************************************************************************/
+
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/to-object.js ***!
+  \*********************************************************************************************/
+
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/a-function.js ***!
+  \**********************************************************************************************/
+
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/set-global.js ***!
+  \**********************************************************************************************/
+
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/shared-key.js ***!
+  \**********************************************************************************************/
+
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/to-integer.js ***!
+  \**********************************************************************************************/
+
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/user-agent.js ***!
+  \**********************************************************************************************/
+
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/v8-version.js ***!
+  \**********************************************************************************************/
+
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/modules/es.array.map.js ***!
+  \**********************************************************************************************/
+
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/classof-raw.js ***!
+  \***********************************************************************************************/
+
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/descriptors.js ***!
+  \***********************************************************************************************/
+
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/hidden-keys.js ***!
+  \***********************************************************************************************/
+
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/object-keys.js ***!
+  \***********************************************************************************************/
+
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/bind-context.js ***!
+  \************************************************************************************************/
+
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/get-built-in.js ***!
+  \************************************************************************************************/
+
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/not-a-regexp.js ***!
+  \************************************************************************************************/
+
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/shared-store.js ***!
+  \************************************************************************************************/
+
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/to-primitive.js ***!
+  \************************************************************************************************/
+
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/modules/es.object.keys.js ***!
+  \************************************************************************************************/
+
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/enum-bug-keys.js ***!
+  \*************************************************************************************************/
+
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/native-symbol.js ***!
+  \*************************************************************************************************/
+
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/modules/es.array.concat.js ***!
+  \*************************************************************************************************/
+
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/modules/es.array.filter.js ***!
+  \*************************************************************************************************/
+
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/array-includes.js ***!
+  \**************************************************************************************************/
+
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/ie8-dom-define.js ***!
+  \**************************************************************************************************/
+
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/indexed-object.js ***!
+  \**************************************************************************************************/
+
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/inspect-source.js ***!
+  \**************************************************************************************************/
+
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/internal-state.js ***!
+  \**************************************************************************************************/
+
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/array-iteration.js ***!
+  \***************************************************************************************************/
+
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/create-property.js ***!
+  \***************************************************************************************************/
+
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/native-weak-map.js ***!
+  \***************************************************************************************************/
+
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/to-absolute-index.js ***!
+  \*****************************************************************************************************/
+
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/to-indexed-object.js ***!
+  \*****************************************************************************************************/
+
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/use-symbol-as-uid.js ***!
+  \*****************************************************************************************************/
+
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/well-known-symbol.js ***!
+  \*****************************************************************************************************/
+
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/modules/es.string.starts-with.js ***!
+  \*******************************************************************************************************/
+
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/array-species-create.js ***!
+  \********************************************************************************************************/
+
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/object-keys-internal.js ***!
+  \********************************************************************************************************/
+
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/Menu.vue?vue&type=template&id=62f6d40b&functional=true& ***!
+  \********************************************************************************************************/
+
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/Close.vue?vue&type=template&id=3cc2737c&functional=true& ***!
+  \*********************************************************************************************************/
+
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/object-define-property.js ***!
+  \**********************************************************************************************************/
+
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/correct-is-regexp-logic.js ***!
+  \***********************************************************************************************************/
+
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/document-create-element.js ***!
+  \***********************************************************************************************************/
+
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/require-object-coercible.js ***!
+  \************************************************************************************************************/
+
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/MenuDown.vue?vue&type=template&id=23154a4d&functional=true& ***!
+  \************************************************************************************************************/
+
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/create-property-descriptor.js ***!
+  \**************************************************************************************************************/
+
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/ArrowRight.vue?vue&type=template&id=08cbfd82&functional=true& ***!
+  \**************************************************************************************************************/
+
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/copy-constructor-properties.js ***!
+  \***************************************************************************************************************/
+
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/object-get-own-property-names.js ***!
+  \*****************************************************************************************************************/
+
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/object-property-is-enumerable.js ***!
+  \*****************************************************************************************************************/
+
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/create-non-enumerable-property.js ***!
+  \******************************************************************************************************************/
+
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/DotsHorizontal.vue?vue&type=template&id=3174c38c&functional=true& ***!
+  \******************************************************************************************************************/
+
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/object-get-own-property-symbols.js ***!
+  \*******************************************************************************************************************/
+
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/array-method-has-species-support.js ***!
+  \********************************************************************************************************************/
+
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/@nextcloud/browser-storage/node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
+  \**********************************************************************************************************************/
+
+/*!********************************************************************************************************************************************!*\
+  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=0.0.0.0&port=1080&pathname=%2Fws&logging=info&reconnect=10 ***!
+  \********************************************************************************************************************************************/
+
+/*!*********************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/Menu.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************/
+
+/*!**********************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/Close.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************/
+
+/*!*************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/MenuDown.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************/
+
+/*!**************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/App.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************/
+
+/*!***************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/ArrowRight.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************/
+
+/*!*******************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/DotsHorizontal.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************/
+
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/App.vue?vue&type=template&id=7ba5bd90& ***!
+  \*******************************************************************************************************************************************************************************************/
+
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/Menu.vue?vue&type=template&id=62f6d40b&functional=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/Close.vue?vue&type=template&id=3cc2737c&functional=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/MenuDown.vue?vue&type=template&id=23154a4d&functional=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/ArrowRight.vue?vue&type=template&id=08cbfd82&functional=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-material-design-icons/DotsHorizontal.vue?vue&type=template&id=3174c38c&functional=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+
+/**
+ * @copyright 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @author 2019 Christoph Wurst <christoph@winzerhof-wurst.at>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2019 Georg Ehrke
+ *
+ * @author Georg Ehrke <oc.list@georgehrke.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2019 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * @copyright Copyright (c) 2019 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2019 John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2019 Julius Härtl <jus@bitgrid.net>
+ *
+ * @author Julius Härtl <jus@bitgrid.net>
+ * @author John Molakvoæ <skjnldsv@protonmail.com>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2019 Kristof Hamann, Paul Schwörer
+ *
+ * @author Kristof Hamann
+ * @author Paul Schwörer
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
+ * @copyright Copyright (c) 2019 Marco Ambrosini <marcoambrosini@pm.me>
+ *
+ * @author Marco Ambrosini <marcoambrosini@pm.me>
+ *
+ * @license GNU AGPL version 3 or any later version
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**!
+ * @fileOverview Kickass library to create and place poppers near their reference elements.
+ * @version 1.16.1
+ * @license
+ * Copyright (c) 2016 Federico Zivolo and contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
