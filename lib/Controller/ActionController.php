@@ -53,7 +53,7 @@ class ActionController extends Controller {
 		$action->setQuantity($quantity);
 		$action->setMaterial($material);
 		$action->setDate($date);
-		return new DataResponse($this->mapper->insert($note));
+		return new DataResponse($this->mapper->insert($action));
 	}
 
 	/**

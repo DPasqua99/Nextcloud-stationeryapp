@@ -16,7 +16,7 @@
 				@clicked="deleteAction(action)" />
 			<ModalContent
 				:materials="materials"
-				@clicked="createAction" />
+				@clicked="createAction(action)" />
 		</AppContent>
 	</Content>
 </template>
@@ -134,7 +134,7 @@ export default {
 		 */
 		saveAction() {
 			if (this.currentActionId === -1) {
-				this.createAction(this.currentNote)
+				this.createAction(this.currentAction)
 			}
 		},
 		/**
@@ -144,7 +144,7 @@ export default {
 		async createAction(action) {
 			this.updating = true
 			try {
-				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action)
+				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action.actionName, action.quantity, action.material, action.date)
 				const index = this.actions.findIndex((match) => match.id === this.currentActionId)
 				this.$set(this.actions, index, response.data)
 				this.currentActionId = response.data.id

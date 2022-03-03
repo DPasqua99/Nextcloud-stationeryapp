@@ -19,8 +19,8 @@
         /** @var ISchemaWrapper $schema */
         $schema = $schemaClosure();
 
-        if (!$schema->hasTable('action')) {
-            $table = $schema->createTable('action');
+        if (!$schema->hasTable('stationeryapp_action')) {
+            $table = $schema->createTable('stationeryapp_action');
             $table->addColumn('id', 'integer', [
                 'autoincrement' => true,
                 'notnull' => true,
@@ -45,8 +45,8 @@
             $table->setPrimaryKey(['id']);
         }
 
-        if (!$schema->hasTable('material')) {
-            $table = $schema->createTable('material');
+        if (!$schema->hasTable('stationeryapp_material')) {
+            $table = $schema->createTable('stationeryapp_material');
             $table->addColumn('id', 'integer', [
                 'autoincrement' => true,
                 'notnull' => true,

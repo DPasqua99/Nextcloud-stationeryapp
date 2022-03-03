@@ -8,8 +8,8 @@ use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Controller;
 
-use OCA\NotesTutorial\Db\Material;
-use OCA\NotesTutorial\Db\MaterialMapper;
+use OCA\stationeryapp\Db\Material;
+use OCA\stationeryapp\Db\MaterialMapper;
 
 class MaterialController extends Controller {
 

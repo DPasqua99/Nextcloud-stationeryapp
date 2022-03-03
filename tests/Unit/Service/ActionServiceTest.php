@@ -52,7 +52,7 @@ class ActionServiceTest extends PHPUnit_Framework_TestCase {
 
 
     /**
-     * @expectedException OCA\NotesTutorial\Service\NotFoundException
+     * @expectedException OCA\stationeryapp\Service\NotFoundException
      */
     public function testUpdateNotFound() {
         // test the correct status code if no note is found

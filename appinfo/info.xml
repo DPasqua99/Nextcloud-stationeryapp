@@ -5,12 +5,12 @@
     <name>Stationery App</name>
     <summary>Simple application for the management of a small business stationery</summary>
     <description><![CDATA[Simple application for the management of a small business stationery]]></description>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <licence>agpl</licence>
     <author mail="davide.pasquadibisceglie@nuovassistenza.it" >Davide Pasquadibisceglie</author>
     <namespace>stationeryapp</namespace>
     <category>organization</category>
-    <bugs>https://github.com/DPasqua99/Cancelleria</bugs>
+    <bugs>https://github.com/DPasqua99/stationeryapp</bugs>
     <dependencies>
         <nextcloud min-version="12" />
     </dependencies>
