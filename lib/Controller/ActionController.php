@@ -47,12 +47,13 @@ class ActionController extends Controller {
 	* @param int $quantity
 	* @param string $date
 	*/
-	public function create(string $name, int $quantity, string $material, string $date) {
+	public function create(string $name, int $quantity, string $material) {
 		$action = new Action();
 		$action->setName($name);
 		$action->setQuantity($quantity);
 		$action->setMaterial($material);
-		$action->setDate($date);
+		$dateTime = new DateTime("now", new DateTimeZone('America/Los_Angeles'));
+		$action->setDate($dateTime);
 		return new DataResponse($this->mapper->insert($action));
 	}
 

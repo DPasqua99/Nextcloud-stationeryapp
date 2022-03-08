@@ -17,7 +17,7 @@
 							<label class="control-label title">Nome</label>
 							<div>
 								<input id="form-name"
-									v-model="actionName"
+									v-model="form.actionName"
 									type="text"
 									class="form-control input-lg"
 									name="Nome"
@@ -31,7 +31,7 @@
 							<div>
 								<select
 									id="form-material"
-									v-model="mat"
+									v-model="form.actionMat"
 									class="form-select"
 									aria-label="Default select example">
 									<option v-for="material in materials"
@@ -50,13 +50,13 @@
 								</div>
 								<div>
 									<input id="form-quantity"
-										v-model="quantity"
+										v-model="form.actionQuantity"
 										type="range"
 										min="1"
 										max="10">
 								</div>
 								<div>
-									<p>Selezionato: {{ quantity }}</p>
+									<p>Selezionato: {{ form.actionQuantity }}</p>
 								</div>
 							</div>
 						</div>
@@ -64,7 +64,7 @@
 					<div class="modal-footer">
 						<div class="form-group">
 							<div>
-								<button class="btn btn-primary" @click="onAddAction()">
+								<button class="btn btn-primary" @click="addAction(form)">
 									Aggiungi
 								</button>
 							</div>
@@ -78,7 +78,7 @@
 
 <script>
 import Modal from '@nextcloud/vue/dist/Components/Modal'
-import moment from 'moment'
+// import moment from 'moment'
 
 export default {
 	name: 'ModalContent',
@@ -94,9 +94,12 @@ export default {
 	data() {
 		return {
 			modal: false,
-			quantity: null,
-			actionName: null,
-			mat: [],
+			form: {
+				actionName: '',
+				actionMat: [],
+				actionQuantity: 2,
+			},
+			currentActionId: null,
 		}
 	},
 	methods: {
@@ -106,18 +109,29 @@ export default {
 		closeModal() {
 			this.modal = false
 		},
-		onAddAction() {
-			const action = {
-				id: -1,
-				actionName: this.actionName,
-				mat: this.mat,
-				quantity: this.quantity,
-				date: moment().format('YYYY-MM-DD hh:mm'),
-			}
-			this.$emit('clicked', action)
+		addAction(form) {
+			console.warn(form.actionName)
+			console.warn(form.actionMat)
+			console.warn(form.actionQuantity)
+			this.$emit('submit', form)
 			this.closeModal()
 		},
+		resetForm() {
+			this.actionName = ''
+			this.actionQuantity = 1
+			this.actionMat = []
+		}
 	},
+	emits: {
+		submit: (form) => {
+			if (form.actionName && form.actionMat && form.actionQuantity) {
+				return true
+			} else {
+				console.warn('Invalid submit event payload!')
+				return false
+			}
+		}
+	}
 }
 </script>
 

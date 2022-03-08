@@ -14,7 +14,7 @@
 		</td>
 		<td class="lite-gray">
 			<Actions>
-				<ActionButton icon="icon-delete" @click="deleteAction(this.actionId)">
+				<ActionButton icon="icon-delete" @click="deleteAction(actionId)">
 					Delete
 				</ActionButton>
 			</Actions>
@@ -49,7 +49,7 @@ export default {
 			default: 1,
 		},
 		date: {
-			type: Date,
+			type: String,
 		},
 	},
 	methods: {

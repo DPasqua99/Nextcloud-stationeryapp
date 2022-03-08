@@ -16,7 +16,7 @@
 				@clicked="deleteAction(action)" />
 			<ModalContent
 				:materials="materials"
-				@clicked="createAction(action)" />
+				@submit="addAction" />
 		</AppContent>
 	</Content>
 </template>
@@ -53,24 +53,20 @@ export default {
 		return {
 			loading: false,
 			currentNoteId: null,
+			currentActionId: null,
 			updating: false,
-			actions: [
-				{
-					id: 1,
-					actionName: 'Davide',
-					mat: 'Penne',
-					quantity: 3,
-					date: moment().format('DD/MM/YY hh:mm'),
-				},
-				{
-					id: 2,
-					actionName: 'Alberto',
-					mat: 'Penne',
-					quantity: 1,
-					date: moment().format('DD/MM/YY hh:mm'),
-				},
-			],
-			currentActionId: 3,
+			newName: null,
+			newQuantity: null,
+			newMat: null,
+			form: null,
+			tempAction: {
+				id: -1,
+				actionName: '',
+				actionMat: null,
+				actionQuantity: null,
+				date: '',
+			},
+			actions: [],
 			materials: [
 				{
 					id: 1,
@@ -88,7 +84,6 @@ export default {
 					quantity: 20,
 				},
 			],
-			nextMaterialId: 4,
 		}
 	},
 	computed: {
@@ -115,18 +110,14 @@ export default {
 		 * The action is not yet saved, therefore an id of -1 is used until it
 		 * has been persisted in the backend
 		 */
-		addAction(newName, newQuantity, newMat) {
-			if (this.currentNoteId !== -1) {
-				this.currentNoteId = -1
-				const action = {
-					id: -1,
-					actionName: newName,
-					mat: newMat,
-					quantity: newQuantity,
-					date: moment().format('DD/MM/YY hh:mm'),
-				}
-				this.actions.push(action)
-			}
+		addAction(form) {
+			alert(form.actionMat)
+			this.form = form
+			this.tempAction.actionName = this.form.actionName
+			this.tempAction.actionMat = this.form.actionMat
+			this.tempAction.actionQuantity = this.form.actionQuantity
+			this.tempAction.date = moment().format('DD/MM/YY hh:mm')
+			this.actions.push(this.tempAction)
 		},
 		/**
 		 * Action tiggered when clicking the save button
@@ -139,12 +130,12 @@ export default {
 		},
 		/**
 		 * Create a new action by sending the information to the server
-		 * @param {Object} action Action object
+		 * @param {object} action Action object
 		 */
 		async createAction(action) {
 			this.updating = true
 			try {
-				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action.actionName, action.quantity, action.material, action.date)
+				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action)
 				const index = this.actions.findIndex((match) => match.id === this.currentActionId)
 				this.$set(this.actions, index, response.data)
 				this.currentActionId = response.data.id
