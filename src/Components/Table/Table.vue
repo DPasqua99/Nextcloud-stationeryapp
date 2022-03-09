@@ -22,8 +22,8 @@
 				:key="action.id"
 				:actionId="action.id"
 				:actionName="action.actionName"
-				:mat="action.mat"
-				:quantity="action.quantity"
+				:mat="action.actionMat"
+				:quantity="action.actionQuantity"
 				:date="action.date"
 				@clicked="deleteAction(action)" />
 		</tbody>

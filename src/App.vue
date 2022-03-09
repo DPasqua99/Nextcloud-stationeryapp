@@ -111,13 +111,18 @@ export default {
 		 * has been persisted in the backend
 		 */
 		addAction(form) {
-			alert(form.actionMat)
-			this.form = form
-			this.tempAction.actionName = this.form.actionName
-			this.tempAction.actionMat = this.form.actionMat
-			this.tempAction.actionQuantity = this.form.actionQuantity
-			this.tempAction.date = moment().format('DD/MM/YY hh:mm')
-			this.actions.push(this.tempAction)
+			const tempAction = {
+				id: -1,
+				actionName: form.actionName,
+				actionMat: form.actionMat,
+				actionQuantity: form.actionQuantity,
+				date: moment().format('DD/MM/YY hh:mm'),
+			}
+			/* tempAction.actionName = form.actionName
+			tempAction.actionMat = form.actionMat
+			tempAction.actionQuantity = form.actionQuantity
+			tempAction.date = moment().format('DD/MM/YY hh:mm') */
+			this.actions.push(tempAction)
 		},
 		/**
 		 * Action tiggered when clicking the save button
