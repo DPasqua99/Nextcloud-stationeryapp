@@ -1,7 +1,7 @@
 <?php
 namespace OCA\stationeryapp\Tests\Unit\Controller;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
@@ -9,14 +9,14 @@ use OCP\AppFramework\Http\DataResponse;
 use OCA\stationeryapp\Service\NotFoundException;
 
 
-class NoteControllerTest extends PHPUnit_Framework_TestCase {
+class ActionControllerTest extends TestCase {
 
 	protected $controller;
 	protected $service;
 	protected $userId = 'john';
 	protected $request;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->request = $this->getMockBuilder('OCP\IRequest')->getMock();
 		$this->service = $this->getMockBuilder('OCA\stationeryapp\Service\ActionService')
 			->disableOriginalConstructor()
@@ -26,7 +26,7 @@ class NoteControllerTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
-	public function testUpdate() {
+	public function testUpdate(): void {
 		$note = 'just check if this value is returned correctly';
 		$this->service->expects($this->once())
 			->method('update')
@@ -43,7 +43,7 @@ class NoteControllerTest extends PHPUnit_Framework_TestCase {
 	}
 
 
-	public function testUpdateNotFound() {
+	public function testUpdateNotFound(): void {
 		// test the correct status code if no note is found
 		$this->service->expects($this->once())
 			->method('update')

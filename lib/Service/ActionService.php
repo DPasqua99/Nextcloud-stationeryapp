@@ -44,13 +44,14 @@ class NoteService {
         }
     }
 
-    public function create(string $name, int $quantity, string $material, string $date) {
+    public function create(string $name, int $quantity, string $material) {
         $action = new Action();
         $action->setName($name);
         $action->setQuantity($quantity);
         $action->setMaterial($material);
-        $action->setDate($date);
-        return $this->mapper->insert($note);
+        $dateTime = new DateTime("now", new DateTimeZone('America/Los_Angeles'));
+		$action->setDate($dateTime);
+        return $this->mapper->insert($action);
     }
 
     public function update(int $id, string $name, int $quantity, string $material, string $date) {

@@ -13,7 +13,7 @@ use OCA\stationeryapp\Db\ActionMapper;
 
 class ActionController extends Controller {
 
-	public function __construct(string $AppName, IRequest $request, ActionMapper $mapper,$UserId){
+	public function __construct(string $AppName, IRequest $request, ActionMapper $mapper, $UserId){
 		parent::__construct($AppName, $request);
 		$this->mapper = $mapper;
 		$this->userId = $UserId;
@@ -45,9 +45,11 @@ class ActionController extends Controller {
 	* @param string $name
 	* @param string $quantity
 	* @param int $quantity
-	* @param string $date
 	*/
-	public function create(string $name, int $quantity, string $material) {
+	public function create(string $name, string $material, int $quantity) {
+		print $name;
+		print $material;
+		print $quantity;
 		$action = new Action();
 		$action->setName($name);
 		$action->setQuantity($quantity);

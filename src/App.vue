@@ -59,13 +59,7 @@ export default {
 			newQuantity: null,
 			newMat: null,
 			form: null,
-			tempAction: {
-				id: -1,
-				actionName: '',
-				actionMat: null,
-				actionQuantity: null,
-				date: '',
-			},
+			currentAction: null,
 			actions: [],
 			materials: [
 				{
@@ -95,6 +89,7 @@ export default {
 		try {
 			const response = await axios.get(generateUrl('/apps/stationeryapp/actions'))
 			this.actions = response.data
+			console.log(response.data)
 		} catch (e) {
 			console.error(e)
 			showError(t('stationeryapp', 'Could not fetch notes'))
@@ -115,13 +110,16 @@ export default {
 				id: -1,
 				actionName: form.actionName,
 				actionMat: form.actionMat,
-				actionQuantity: form.actionQuantity,
+				actionQuantity: Number(form.actionQuantity),
 				date: moment().format('DD/MM/YY hh:mm'),
 			}
+			this.currentAction = tempAction
+			this.currentActionId = tempAction.id
 			/* tempAction.actionName = form.actionName
 			tempAction.actionMat = form.actionMat
 			tempAction.actionQuantity = form.actionQuantity
 			tempAction.date = moment().format('DD/MM/YY hh:mm') */
+			this.saveAction()
 			this.actions.push(tempAction)
 		},
 		/**
@@ -140,8 +138,11 @@ export default {
 		async createAction(action) {
 			this.updating = true
 			try {
-				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action)
+				alert(typeof (action.actionName))
+				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action.actionName, action.actionMat, action.actionQuantity)
+				alert(response)
 				const index = this.actions.findIndex((match) => match.id === this.currentActionId)
+				alert(index)
 				this.$set(this.actions, index, response.data)
 				this.currentActionId = response.data.id
 			} catch (e) {
@@ -149,6 +150,22 @@ export default {
 				showError(t('stationeryapp', 'Could not create the action'))
 			}
 			this.updating = false
+
+			// example for calling the PUT /notes/1 URL
+			/* const baseUrl = OC.generateUrl('/apps/stationeryapp')
+			$.ajax({
+			    url: baseUrl + '/insertAction',
+			    type: 'PUT',
+			    contentType: 'application/json',
+			    data: JSON.stringify(this.currentAction)
+			}).done(function (response) {
+			    const index = this.actions.findIndex((match) => match.id === this.currentActionId)
+				this.$set(this.actions, index, response.data)
+				this.currentActionId = response.data.id
+			}).fail(function (response, code) {
+			    console.error(e)
+				showError(t('stationeryapp', 'Could not create the action'))
+			}); */
 		},
 		/**
 		 * Delete an action, remove it from the frontend and show a hint

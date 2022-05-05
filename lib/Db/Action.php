@@ -20,7 +20,7 @@ class Action extends Entity implements JsonSerializable {
 		return [
 			'id' => $this->id,
 			'name' => $this->name,
-			'material' => $this->mat,
+			'material' => $this->material,
 			'quantity' => $this->quantity,
 			'date' => $this->date,
 		];

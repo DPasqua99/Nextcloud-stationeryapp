@@ -35,6 +35,7 @@ export default {
 	props: {
 		actionId: {
 			type: Number,
+			default: 1,
 		},
 		actionName: {
 			type: String,
@@ -42,11 +43,11 @@ export default {
 		},
 		mat: {
 			type: String,
-			default: 'Penne',
+			default: 'Matite',
 		},
 		quantity: {
 			type: Number,
-			default: 1,
+			default: 2,
 		},
 		date: {
 			type: String,
