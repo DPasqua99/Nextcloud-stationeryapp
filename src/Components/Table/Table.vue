@@ -41,7 +41,6 @@ export default {
 	props: {
 		actions: {
 			type: Array,
-			default: null,
 		},
 	},
 	data() {

@@ -12,7 +12,7 @@
 		</AppNavigation>
 		<AppContent>
 			<Table
-				:actions="actions"
+				:actions="this.actions"
 				@clicked="deleteAction(action)" />
 			<ModalContent
 				:materials="materials"
@@ -89,10 +89,12 @@ export default {
 		try {
 			const response = await axios.get(generateUrl('/apps/stationeryapp/actions'))
 			this.actions = response.data
+			const responseMaterials = await axios.get(generateUrl('apps/stationeryapp/materials'))
+			this.materials = responseMaterials.data
 			console.log(response.data)
 		} catch (e) {
 			console.error(e)
-			showError(t('stationeryapp', 'Could not fetch notes'))
+			showError(t('stationeryapp', 'Could not fetch resources'))
 		}
 		this.loading = false
 	},

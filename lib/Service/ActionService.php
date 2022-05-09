@@ -10,7 +10,7 @@ use OCA\stationeryapp\Db\Action;
 use OCA\stationeryapp\Db\ActionMapper;
 
 
-class NoteService {
+class ActionService {
 
     private $mapper;
 
