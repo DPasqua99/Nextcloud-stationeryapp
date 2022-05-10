@@ -1,9 +1,7 @@
 const path = require('path')
-const webpack = require('webpack')
 const webpackConfig = require('@nextcloud/webpack-vue-config')
 
-webpackConfig.entry['main'] = path.join(__dirname, 'src', 'main.js');
-webpackConfig.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
+webpackConfig.entry.main = path.join(__dirname, 'src', 'main.js')
 
 webpackConfig.stats = {
 	context: path.resolve(__dirname, 'src'),
@@ -13,6 +11,4 @@ webpackConfig.stats = {
 	modules: true,
 }
 
-module.exports = webpackConfig;
-
-
+module.exports = webpackConfig

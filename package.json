@@ -1,7 +1,7 @@
 {
 	"name": "stationeryapp",
 	"description": "Simple application for the management of a small business stationery",
-	"version": "0.0.1",
+	"version": "0.0.5",
 	"author": "Davide Pasquadibisceglie",
 	"contributors": [
 		"Davide Pasquadibisceglie"
@@ -34,8 +34,10 @@
 		"@vueform/slider": "^2.0.8",
 		"axios": "^0.26.0",
 		"eslint-plugin-import": "^2.25.3",
+		"merge": "^2.1.1",
 		"moment": "^2.29.1",
-		"vue": "^2.6.12"
+		"vue": "^2.6.12",
+		"webpack-merge": "^5.8.0"
 	},
 	"browserslist": [
 		"extends @nextcloud/browserslist-config"

@@ -12,7 +12,7 @@
 		</AppNavigation>
 		<AppContent>
 			<Table
-				:actions="this.actions"
+				:actions="actions"
 				@clicked="deleteAction(action)" />
 			<ModalContent
 				:materials="materials"
@@ -77,6 +77,11 @@ export default {
 					name: 'Matite',
 					quantity: 20,
 				},
+				{
+					id: 4,
+					name: 'Pennarelli',
+					quantity: 20,
+				},
 			],
 		}
 	},
@@ -89,12 +94,10 @@ export default {
 		try {
 			const response = await axios.get(generateUrl('/apps/stationeryapp/actions'))
 			this.actions = response.data
-			const responseMaterials = await axios.get(generateUrl('apps/stationeryapp/materials'))
-			this.materials = responseMaterials.data
 			console.log(response.data)
 		} catch (e) {
 			console.error(e)
-			showError(t('stationeryapp', 'Could not fetch resources'))
+			showError(t('stationeryapp', 'Could not fetch actions'))
 		}
 		this.loading = false
 	},
@@ -106,6 +109,7 @@ export default {
 		 * Create a new action
 		 * The action is not yet saved, therefore an id of -1 is used until it
 		 * has been persisted in the backend
+		 * @param form
 		 */
 		addAction(form) {
 			const tempAction = {

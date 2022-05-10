@@ -49,6 +49,7 @@ export default {
 			type: Number,
 			default: 2,
 		},
+		// eslint-disable-next-line vue/require-default-prop
 		date: {
 			type: String,
 		},

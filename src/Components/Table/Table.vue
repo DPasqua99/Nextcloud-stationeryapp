@@ -20,10 +20,10 @@
 			<TableContent
 				v-for="action in actions"
 				:key="action.id"
-				:actionId="action.id"
-				:actionName="action.actionName"
-				:mat="action.actionMat"
-				:quantity="action.actionQuantity"
+				:action-id="action.id"
+				:action-name="action.name"
+				:mat="action.material"
+				:quantity="action.quantity"
 				:date="action.date"
 				@clicked="deleteAction(action)" />
 		</tbody>
@@ -39,6 +39,7 @@ export default {
 		TableContent,
 	},
 	props: {
+		// eslint-disable-next-line vue/require-default-prop
 		actions: {
 			type: Array,
 		},

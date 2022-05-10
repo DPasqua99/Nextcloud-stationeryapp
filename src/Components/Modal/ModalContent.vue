@@ -91,13 +91,23 @@ export default {
 			default: null,
 		},
 	},
+	emits: {
+		submit: (form) => {
+			if (form.actionName && form.actionMat && form.actionQuantity) {
+				return true
+			} else {
+				console.warn('Invalid submit event payload!')
+				return false
+			}
+		},
+	},
 	data() {
 		return {
 			modal: false,
 			form: {
 				actionName: '',
 				actionMat: [],
-				actionQuantity: 2,
+				actionQuantity: 1,
 			},
 			currentActionId: null,
 		}
@@ -120,18 +130,8 @@ export default {
 			this.actionName = ''
 			this.actionQuantity = 1
 			this.actionMat = []
-		}
+		},
 	},
-	emits: {
-		submit: (form) => {
-			if (form.actionName && form.actionMat && form.actionQuantity) {
-				return true
-			} else {
-				console.warn('Invalid submit event payload!')
-				return false
-			}
-		}
-	}
 }
 </script>
 
