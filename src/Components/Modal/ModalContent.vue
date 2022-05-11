@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<button class="fixed-right-bottom" @click="showModal">
+		<Button class="fixed-right-bottom" @click="showModal">
 			Show Modal
-		</button>
+		</Button>
 		<Modal v-if="modal"
 			size="large"
 			@close="closeModal">
@@ -135,7 +135,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.modal__content {
 		margin: 50px;
 		text-align: center;
@@ -147,7 +147,8 @@ export default {
 		bottom: 0;
 		z-index: 1030;
 		margin: 0 1.5rem 1.5rem 0;
-		border-radius:50%;
+		background-color:  var(--color-primary);
+		color: var(--color-main-text);
 	}
 
 	.title{

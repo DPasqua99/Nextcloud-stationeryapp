@@ -114,17 +114,14 @@ export default {
 		addAction(form) {
 			const tempAction = {
 				id: -1,
-				actionName: form.actionName,
-				actionMat: form.actionMat,
-				actionQuantity: Number(form.actionQuantity),
+				name: form.actionName,
+				material: form.actionMat,
+				quantity: Number(form.actionQuantity),
 				date: moment().format('DD/MM/YY hh:mm'),
 			}
 			this.currentAction = tempAction
 			this.currentActionId = tempAction.id
-			/* tempAction.actionName = form.actionName
-			tempAction.actionMat = form.actionMat
-			tempAction.actionQuantity = form.actionQuantity
-			tempAction.date = moment().format('DD/MM/YY hh:mm') */
+
 			this.saveAction()
 			this.actions.push(tempAction)
 		},
@@ -144,13 +141,11 @@ export default {
 		async createAction(action) {
 			this.updating = true
 			try {
-				alert(typeof (action.actionName))
-				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action.actionName, action.actionMat, action.actionQuantity)
-				alert(response)
+				const response = await axios.post(generateUrl('/apps/stationeryapp/insertAction'), action)
 				const index = this.actions.findIndex((match) => match.id === this.currentActionId)
-				alert(index)
 				this.$set(this.actions, index, response.data)
 				this.currentActionId = response.data.id
+				this.removeQuantity(action.quantity, action.material)
 			} catch (e) {
 				console.error(e)
 				showError(t('stationeryapp', 'Could not create the action'))
@@ -190,8 +185,12 @@ export default {
 				showError(t('stationeryapp', 'Could not delete the action'))
 			}
 		},
-		addMaterial(value) {
-			const matName = value[0].toUpperCase() + value.slice(1)
+		/**
+		 * Add a new material to the materials array
+		 * @param {String} name
+		 */
+		addMaterial(name) {
+			const matName = name[0].toUpperCase() + name.slice(1)
 			const mat = {
 				id: this.nextMaterialId,
 				name: matName,
@@ -199,6 +198,18 @@ export default {
 			}
 			this.nextMaterialId++
 			this.materials.push(mat)
+		},
+		/**
+		 * Remove a quantity
+		 * @param quantityToRemove
+		 * @param materialFromRemove
+		 */
+		removeQuantity(quantityToRemove, materialFromRemove) {
+			for (const material in this.materials) {
+				if (material.name.equals(materialFromRemove)) {
+					this.materials.quantity = material.quantity - quantityToRemove
+				}
+			}
 		},
 	},
 }

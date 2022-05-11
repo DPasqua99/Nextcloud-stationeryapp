@@ -11,6 +11,8 @@ use OCP\AppFramework\Controller;
 use OCA\stationeryapp\Db\Action;
 use OCA\stationeryapp\Db\ActionMapper;
 
+use \DateTime;
+
 class ActionController extends Controller {
 
 	public function __construct(string $AppName, IRequest $request, ActionMapper $mapper, $UserId){
@@ -54,7 +56,7 @@ class ActionController extends Controller {
 		$action->setName($name);
 		$action->setQuantity($quantity);
 		$action->setMaterial($material);
-		$dateTime = new DateTime("now", new DateTimeZone('America/Los_Angeles'));
+		$dateTime = date('Y-m-d G:i:s');
 		$action->setDate($dateTime);
 		return new DataResponse($this->mapper->insert($action));
 	}

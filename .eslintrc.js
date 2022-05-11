@@ -1,8 +1,8 @@
 module.exports = {
 	extends: [
-		'@nextcloud'
+		'@nextcloud',
 	],
-	"rules": {
-		"no-console": 0
-	}
-};
+	rules: {
+		'no-console': 0,
+	},
+}
