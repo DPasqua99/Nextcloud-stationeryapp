@@ -61,28 +61,7 @@ export default {
 			form: null,
 			currentAction: null,
 			actions: [],
-			materials: [
-				{
-					id: 1,
-					name: 'Penne',
-					quantity: 20,
-				},
-				{
-					id: 2,
-					name: 'Raccoglitori',
-					quantity: 20,
-				},
-				{
-					id: 3,
-					name: 'Matite',
-					quantity: 20,
-				},
-				{
-					id: 4,
-					name: 'Pennarelli',
-					quantity: 20,
-				},
-			],
+			materials: [],
 		}
 	},
 	computed: {
@@ -92,9 +71,10 @@ export default {
 	 */
 	async mounted() {
 		try {
-			const response = await axios.get(generateUrl('/apps/stationeryapp/actions'))
-			this.actions = response.data
-			console.log(response.data)
+			const responseActions = await axios.get(generateUrl('/apps/stationeryapp/actions'))
+			this.actions = responseActions.data
+			const responseMaterials = await axios.get(generateUrl('/apps/stationeryapp/materials'))
+			this.materials = responseMaterials.data
 		} catch (e) {
 			console.error(e)
 			showError(t('stationeryapp', 'Could not fetch actions'))
