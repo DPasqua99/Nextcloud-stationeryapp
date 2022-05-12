@@ -25,7 +25,7 @@
 				:mat="action.material"
 				:quantity="action.quantity"
 				:date="action.date"
-				@clicked="deleteAction(action)" />
+				@delete="deleteAction" />
 		</tbody>
 	</table>
 </template>
@@ -49,8 +49,9 @@ export default {
 		}
 	},
 	methods: {
-		deleteAction(action) {
-			this.$emit('clicked', action)
+		deleteAction(id) {
+			alert(id)
+			this.$emit('delete', id)
 		},
 	},
 }

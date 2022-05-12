@@ -56,7 +56,8 @@ export default {
 	},
 	methods: {
 		deleteAction(actionId) {
-			this.$emit('clicked', actionId)
+			alert(actionId)
+			this.$emit('delete', actionId)
 		},
 	},
 }

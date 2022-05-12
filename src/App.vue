@@ -13,7 +13,7 @@
 		<AppContent>
 			<Table
 				:actions="actions"
-				@clicked="deleteAction(action)" />
+				@delete="deleteAction" />
 			<ModalContent
 				:materials="materials"
 				@submit="addAction" />
@@ -109,7 +109,8 @@ export default {
 		 * Create a new action
 		 * The action is not yet saved, therefore an id of -1 is used until it
 		 * has been persisted in the backend
-		 * @param form
+		 *
+		 * @param {object} form the parameters from the form
 		 */
 		addAction(form) {
 			const tempAction = {
@@ -117,10 +118,12 @@ export default {
 				name: form.actionName,
 				material: form.actionMat,
 				quantity: Number(form.actionQuantity),
-				date: moment().format('DD/MM/YY hh:mm'),
+				date: moment().format('YYYY-MM-DD hh:mm'),
 			}
 			this.currentAction = tempAction
 			this.currentActionId = tempAction.id
+
+			this.removeQuantity(tempAction.quantity, tempAction.material)
 
 			this.saveAction()
 			this.actions.push(tempAction)
@@ -136,6 +139,7 @@ export default {
 		},
 		/**
 		 * Create a new action by sending the information to the server
+		 *
 		 * @param {object} action Action object
 		 */
 		async createAction(action) {
@@ -151,30 +155,22 @@ export default {
 				showError(t('stationeryapp', 'Could not create the action'))
 			}
 			this.updating = false
-
-			// example for calling the PUT /notes/1 URL
-			/* const baseUrl = OC.generateUrl('/apps/stationeryapp')
-			$.ajax({
-			    url: baseUrl + '/insertAction',
-			    type: 'PUT',
-			    contentType: 'application/json',
-			    data: JSON.stringify(this.currentAction)
-			}).done(function (response) {
-			    const index = this.actions.findIndex((match) => match.id === this.currentActionId)
-				this.$set(this.actions, index, response.data)
-				this.currentActionId = response.data.id
-			}).fail(function (response, code) {
-			    console.error(e)
-				showError(t('stationeryapp', 'Could not create the action'))
-			}); */
 		},
 		/**
 		 * Delete an action, remove it from the frontend and show a hint
-		 * @param {Object} action Action object
+		 *
+		 * @param {number} id id of the action object
 		 */
-		async deleteAction(action) {
+		async deleteAction(id) {
+			alert(id)
+			let action = null
+			for (let i = 0, len = this.actions.length; i < len; i++) {
+				if (id === this.actions[i].id) {
+					action = this.actions[i]
+				}
+			}
 			try {
-				await axios.delete(generateUrl(`/apps/stationeryapp/actions/${action.id}`))
+				await axios.delete(generateUrl(`/apps/stationeryapp/deleteAction/${action.id}`))
 				this.actions.splice(this.actions.indexOf(action), 1)
 				if (this.currentActionId === action.id) {
 					this.currentActionId = null
@@ -187,7 +183,8 @@ export default {
 		},
 		/**
 		 * Add a new material to the materials array
-		 * @param {String} name
+		 *
+		 * @param {string} name the name of the material to add
 		 */
 		addMaterial(name) {
 			const matName = name[0].toUpperCase() + name.slice(1)
@@ -201,14 +198,31 @@ export default {
 		},
 		/**
 		 * Remove a quantity
-		 * @param quantityToRemove
-		 * @param materialFromRemove
+		 *
+		 * @param {number} quantityToRemove the number of material to remove
+		 * @param {string} materialFromRemove the material to remove
 		 */
 		removeQuantity(quantityToRemove, materialFromRemove) {
-			for (const material in this.materials) {
-				if (material.name.equals(materialFromRemove)) {
-					this.materials.quantity = material.quantity - quantityToRemove
-				}
+			for (let i = 0, len = this.materials.length; i < len; i++) {
+				 if (materialFromRemove.toLowerCase() === this.materials[i].name.toLowerCase()) {
+					 if (this.controlMagQuantity(this.materials[i], quantityToRemove)) {
+						this.materials[i].quantity = this.materials[i].quantity - quantityToRemove
+					 }
+				 }
+			}
+		},
+		/**
+		 * Check if the quantity in stock is sufficient
+		 *
+		 * @param {object} material the material to remove
+		 * @param {number} quantityToRemove the quantity to remove
+		 */
+		controlMagQuantity(material, quantityToRemove) {
+			if ((parseInt(material.quantity) - parseInt(quantityToRemove)) < 0) {
+				showError(t('stationeryapp', 'Could not create action: insufficient material'))
+				return false
+			} else {
+				return true
 			}
 		},
 	},

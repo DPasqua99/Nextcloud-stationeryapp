@@ -1,0 +1,5 @@
+DA FARE
+
+->	[FATTO]		Cancellazione di un azione sia dal database che dal UI
+
+->	Gestione materiali
