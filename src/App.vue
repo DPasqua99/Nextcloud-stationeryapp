@@ -52,7 +52,7 @@ export default {
 	data() {
 		return {
 			loading: false,
-			currentNoteId: null,
+			currentMaterialId: null,
 			currentActionId: null,
 			updating: false,
 			newName: null,
@@ -60,6 +60,7 @@ export default {
 			newMat: null,
 			form: null,
 			currentAction: null,
+			currentMaterial: null,
 			actions: [],
 			materials: [],
 		}
@@ -118,6 +119,15 @@ export default {
 			}
 		},
 		/**
+		 * Action tiggered when clicking the save button
+		 * save a new material on the database
+		 */
+		saveMaterial() {
+			if (this.currentMaterialId === -1) {
+				this.createMaterial(this.currentMaterial)
+			}
+		},
+		/**
 		 * Create a new action by sending the information to the server
 		 *
 		 * @param {object} action Action object
@@ -137,12 +147,30 @@ export default {
 			this.updating = false
 		},
 		/**
+		 * Create a new material by sending the information to the server
+		 *
+		 * @param {object} material Material object
+		 */
+		async createMaterial(material) {
+			this.updating = true
+			try {
+				const response = await axios.post(generateUrl('/apps/stationeryapp/insertMaterial'), material)
+				const index = this.materials.findIndex((match) => match.id === this.currentMaterialId)
+				this.$set(this.materials, index, response.data)
+				this.currentMaterialId = response.data.id
+				showSuccess(t('stationeryapp', 'Material Created'))
+			} catch (e) {
+				console.error(e)
+				showError(t('stationeryapp', 'Could not set the material'))
+			}
+			this.updating = false
+		},
+		/**
 		 * Delete an action, remove it from the frontend and show a hint
 		 *
 		 * @param {number} id id of the action object
 		 */
 		async deleteAction(id) {
-			alert(id)
 			let action = null
 			for (let i = 0, len = this.actions.length; i < len; i++) {
 				if (id === this.actions[i].id) {
@@ -168,13 +196,17 @@ export default {
 		 */
 		addMaterial(name) {
 			const matName = name[0].toUpperCase() + name.slice(1)
-			const mat = {
-				id: this.nextMaterialId,
+			const tempMaterial = {
+				id: -1,
 				name: matName,
 				quantity: 20,
 			}
-			this.nextMaterialId++
-			this.materials.push(mat)
+			this.currentMaterialId = tempMaterial.id
+			this.currentMaterial = tempMaterial
+
+			this.saveMaterial()
+
+			this.materials.push(tempMaterial)
 		},
 		/**
 		 * Remove a quantity

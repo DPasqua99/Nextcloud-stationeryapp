@@ -50,7 +50,6 @@ export default {
 	},
 	methods: {
 		deleteAction(id) {
-			alert(id)
 			this.$emit('delete', id)
 		},
 	},

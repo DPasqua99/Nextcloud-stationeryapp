@@ -49,7 +49,7 @@ class MaterialController extends Controller {
 		$material = new Material();
 		$material->setName($name);
 		$material->setQuantity($quantity);
-		return new DataResponse($this->mapper->insert($note));
+		return new DataResponse($this->mapper->insert($material));
 	}
 
 	/**
