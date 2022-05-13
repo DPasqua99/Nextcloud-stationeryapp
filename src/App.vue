@@ -139,7 +139,6 @@ export default {
 				const index = this.actions.findIndex((match) => match.id === this.currentActionId)
 				this.$set(this.actions, index, response.data)
 				this.currentActionId = response.data.id
-				this.removeQuantity(action.quantity, action.material)
 			} catch (e) {
 				console.error(e)
 				showError(t('stationeryapp', 'Could not create the action'))
@@ -179,6 +178,7 @@ export default {
 			}
 			try {
 				await axios.delete(generateUrl(`/apps/stationeryapp/deleteAction/${action.id}`))
+				this.readdQuantity(action.material, action.quantity)
 				this.actions.splice(this.actions.indexOf(action), 1)
 				if (this.currentActionId === action.id) {
 					this.currentActionId = null
@@ -219,6 +219,7 @@ export default {
 				 if (materialFromRemove.toLowerCase() === this.materials[i].name.toLowerCase()) {
 					 if (this.controlMagQuantity(this.materials[i], quantityToRemove)) {
 						this.materials[i].quantity = this.materials[i].quantity - quantityToRemove
+						this.updateMaterial(this.materials[i])
 					 }
 				 }
 			}
@@ -235,6 +236,35 @@ export default {
 				return false
 			} else {
 				return true
+			}
+		},
+		/**
+		 * Update an existing material on the server
+		 *
+		 * @param {object} material Material object
+		 */
+		async updateMaterial(material) {
+			this.updating = true
+			try {
+				await axios.put(generateUrl(`/apps/stationeryapp/updateMaterial/${material.id}`), material)
+			} catch (e) {
+				console.error(e)
+				showError(t('stationeryapp', 'Could not update the material'))
+			}
+			this.updating = false
+		},
+		/**
+		 * Check if the quantity in stock is sufficient
+		 *
+		 * @param {string} materialToReadd the material to remove
+		 * @param {number} quantityToReadd the quantity to remove
+		 */
+		readdQuantity(materialToReadd, quantityToReadd) {
+			for (let i = 0, len = this.materials.length; i < len; i++) {
+				 if (materialToReadd.toLowerCase() === this.materials[i].name.toLowerCase()) {
+					this.materials[i].quantity = (parseInt(this.materials[i].quantity) + parseInt(quantityToReadd))
+					this.updateMaterial(this.materials[i])
+				 }
 			}
 		},
 	},

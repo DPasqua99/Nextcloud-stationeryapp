@@ -25,6 +25,13 @@ import AppNavigationItem from '@nextcloud/vue/dist/Components/AppNavigationItem'
 import AppNavigationCounter from '@nextcloud/vue/dist/Components/AppNavigationCounter'
 import AppNavigationNewItem from '@nextcloud/vue/dist/Components/AppNavigationNewItem'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import { emit } from '@nextcloud/event-bus'
+emit('toggle-navigation', {
+	open: true,
+})
+emit('toggle-navigation', {
+	open: false,
+})
 
 export default {
 	name: 'MaterialSection',

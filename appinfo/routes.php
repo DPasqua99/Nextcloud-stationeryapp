@@ -17,6 +17,6 @@ return [
        ['name' => 'action#destroy', 'url' => '/deleteAction/{id}', 'verb' => 'DELETE'],
        ['name' => 'material#index', 'url' => '/materials', 'verb' => 'GET'],
        ['name' => 'material#create', 'url' => '/insertMaterial', 'verb' => 'POST'],
-       ['name' => 'material#updateMaterial', 'url' => '/updateMaterial/{id}', 'verb' => 'PUT'],       
+       ['name' => 'material#update', 'url' => '/updateMaterial/{id}', 'verb' => 'PUT'],       
     ]
 ];
