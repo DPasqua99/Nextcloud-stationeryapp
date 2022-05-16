@@ -61,3 +61,10 @@ export default {
 	},
 }
 </script>
+<style scoped>
+	tr {
+		background: white;
+		border-radius: 10px 10px 10px 10px;
+		margin-top: 2%
+	}
+</style>

@@ -1,17 +1,19 @@
 <template>
-	<AppNavigationItem title="Materiale" icon="icon-category-enabled">
+	<AppNavigationItem title="Materiale" :allow-collapse="true" :open="true">
 		<AppNavigationItem
 			v-for="material in materials"
 			:key="material.id"
 			:title="material.name">
-			<AppNavigationCounter slot="counter" :highlighted="true">
-				{{ material.quantity }}
-			</AppNavigationCounter>
+			<template #counter>
+				<AppNavigationCounter slot="counter" :highlighted="true">
+					{{ material.quantity }}
+				</AppNavigationCounter>
+			</template>
 			<template #actions>
-				<ActionButton icon="icon-edit" @click="alert('Edit')">
+				<ActionButton icon="icon-edit" @click="setQuantity">
 					Edit
 				</ActionButton>
-				<ActionButton icon="icon-delete" @click="alert('Delete')">
+				<ActionButton icon="icon-delete" @click="removeMaterials(material.id)">
 					Delete
 				</ActionButton>
 			</template>
@@ -25,13 +27,6 @@ import AppNavigationItem from '@nextcloud/vue/dist/Components/AppNavigationItem'
 import AppNavigationCounter from '@nextcloud/vue/dist/Components/AppNavigationCounter'
 import AppNavigationNewItem from '@nextcloud/vue/dist/Components/AppNavigationNewItem'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
-import { emit } from '@nextcloud/event-bus'
-emit('toggle-navigation', {
-	open: true,
-})
-emit('toggle-navigation', {
-	open: false,
-})
 
 export default {
 	name: 'MaterialSection',
@@ -40,7 +35,6 @@ export default {
 		AppNavigationCounter,
 		AppNavigationNewItem,
 		ActionButton,
-
 	},
 	props: {
 		materials: {
@@ -53,6 +47,13 @@ export default {
 	methods: {
 		addMaterials(value) {
 			this.$emit('new-item', value)
+		},
+		removeMaterials(materialId) {
+			alert(materialId)
+			this.$emit('remove-material', materialId)
+		},
+		setQuantity() {
+			this.$emit('set-quantity')
 		},
 	},
 }

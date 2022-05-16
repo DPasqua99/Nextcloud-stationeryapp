@@ -4,11 +4,10 @@
 			title="Filtri">
 			<FilterSection />
 			<AppNavigationSpacer />
-			<div class="bottom">
-				<MaterialSection
-					:materials="materials"
-					@new-item="addMaterial" />
-			</div>
+			<MaterialSection
+				:materials="materials"
+				@new-item="addMaterial"
+				@remove-material="removeMaterial" />
 		</AppNavigation>
 		<AppContent>
 			<Table
@@ -187,6 +186,24 @@ export default {
 			} catch (e) {
 				console.error(e)
 				showError(t('stationeryapp', 'Could not delete the action'))
+			}
+		},
+		/**
+		 * Delete a material, remove it from the frontend and show a hint
+		 *
+		 * @param {number} id id of the material object
+		 */
+		async removeMaterial(id) {
+			try {
+				await axios.delete(generateUrl(`/apps/stationeryapp/deleteMaterial/${id}`))
+				this.materials.splice(this.materials.indexOf(id), 1)
+				if (this.currentMaterialId === id) {
+					this.currentActionId = null
+				}
+				showSuccess(t('stationeryapp', 'Material deleted'))
+			} catch (e) {
+				console.error(e)
+				showError(t('stationeryapp', 'Could not delete the material'))
 			}
 		},
 		/**
