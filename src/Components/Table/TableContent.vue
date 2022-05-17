@@ -46,8 +46,8 @@ export default {
 			default: 'Matite',
 		},
 		quantity: {
-			type: Number,
-			default: 2,
+			type: String,
+			default: '2',
 		},
 		// eslint-disable-next-line vue/require-default-prop
 		date: {
@@ -56,9 +56,15 @@ export default {
 	},
 	methods: {
 		deleteAction(actionId) {
-			alert(actionId)
 			this.$emit('delete', actionId)
 		},
 	},
 }
 </script>
+<style scoped>
+	tr {
+		background: white;
+		border-radius: 10px 10px 10px 10px;
+		margin-top: 2%
+	}
+</style>

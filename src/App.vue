@@ -4,11 +4,11 @@
 			title="Filtri">
 			<FilterSection />
 			<AppNavigationSpacer />
-			<div class="bottom">
-				<MaterialSection
-					:materials="materials"
-					@new-item="addMaterial" />
-			</div>
+			<MaterialSection
+				:materials="materials"
+				@new-item="addMaterial"
+				@remove-material="removeMaterial"
+				@set-quantity="setMaterialQuantity" />
 		</AppNavigation>
 		<AppContent>
 			<Table
@@ -52,7 +52,7 @@ export default {
 	data() {
 		return {
 			loading: false,
-			currentNoteId: null,
+			currentMaterialId: null,
 			currentActionId: null,
 			updating: false,
 			newName: null,
@@ -60,41 +60,22 @@ export default {
 			newMat: null,
 			form: null,
 			currentAction: null,
+			currentMaterial: null,
 			actions: [],
-			materials: [
-				{
-					id: 1,
-					name: 'Penne',
-					quantity: 20,
-				},
-				{
-					id: 2,
-					name: 'Raccoglitori',
-					quantity: 20,
-				},
-				{
-					id: 3,
-					name: 'Matite',
-					quantity: 20,
-				},
-				{
-					id: 4,
-					name: 'Pennarelli',
-					quantity: 20,
-				},
-			],
+			materials: [],
 		}
 	},
 	computed: {
 	},
 	/**
-	 * Fetch list of actions when the component is loaded
+	 * Fetch list of actions and materials when the component is loaded
 	 */
 	async mounted() {
 		try {
-			const response = await axios.get(generateUrl('/apps/stationeryapp/actions'))
-			this.actions = response.data
-			console.log(response.data)
+			const responseActions = await axios.get(generateUrl('/apps/stationeryapp/actions'))
+			this.actions = responseActions.data
+			const responseMaterials = await axios.get(generateUrl('/apps/stationeryapp/materials'))
+			this.materials = responseMaterials.data
 		} catch (e) {
 			console.error(e)
 			showError(t('stationeryapp', 'Could not fetch actions'))
@@ -138,6 +119,15 @@ export default {
 			}
 		},
 		/**
+		 * Action tiggered when clicking the save button
+		 * save a new material on the database
+		 */
+		saveMaterial() {
+			if (this.currentMaterialId === -1) {
+				this.createMaterial(this.currentMaterial)
+			}
+		},
+		/**
 		 * Create a new action by sending the information to the server
 		 *
 		 * @param {object} action Action object
@@ -149,10 +139,28 @@ export default {
 				const index = this.actions.findIndex((match) => match.id === this.currentActionId)
 				this.$set(this.actions, index, response.data)
 				this.currentActionId = response.data.id
-				this.removeQuantity(action.quantity, action.material)
 			} catch (e) {
 				console.error(e)
 				showError(t('stationeryapp', 'Could not create the action'))
+			}
+			this.updating = false
+		},
+		/**
+		 * Create a new material by sending the information to the server
+		 *
+		 * @param {object} material Material object
+		 */
+		async createMaterial(material) {
+			this.updating = true
+			try {
+				const response = await axios.post(generateUrl('/apps/stationeryapp/insertMaterial'), material)
+				const index = this.materials.findIndex((match) => match.id === this.currentMaterialId)
+				this.$set(this.materials, index, response.data)
+				this.currentMaterialId = response.data.id
+				showSuccess(t('stationeryapp', 'Material Created'))
+			} catch (e) {
+				console.error(e)
+				showError(t('stationeryapp', 'Could not set the material'))
 			}
 			this.updating = false
 		},
@@ -162,7 +170,6 @@ export default {
 		 * @param {number} id id of the action object
 		 */
 		async deleteAction(id) {
-			alert(id)
 			let action = null
 			for (let i = 0, len = this.actions.length; i < len; i++) {
 				if (id === this.actions[i].id) {
@@ -171,6 +178,7 @@ export default {
 			}
 			try {
 				await axios.delete(generateUrl(`/apps/stationeryapp/deleteAction/${action.id}`))
+				this.readdQuantity(action.material, action.quantity)
 				this.actions.splice(this.actions.indexOf(action), 1)
 				if (this.currentActionId === action.id) {
 					this.currentActionId = null
@@ -182,19 +190,55 @@ export default {
 			}
 		},
 		/**
+		 * Delete a material, remove it from the frontend and show a hint
+		 *
+		 * @param {number} id id of the material object
+		 */
+		async removeMaterial(id) {
+			try {
+				await axios.delete(generateUrl(`/apps/stationeryapp/deleteMaterial/${id}`))
+				this.materials.splice(this.materials.indexOf(id), 1)
+				if (this.currentMaterialId === id) {
+					this.currentActionId = null
+				}
+				showSuccess(t('stationeryapp', 'Material deleted'))
+			} catch (e) {
+				console.error(e)
+				showError(t('stationeryapp', 'Could not delete the material'))
+			}
+		},
+		/**
+		 * Delete an action, remove it from the frontend and show a hint
+		 *
+		 * @param {object} newMaterial the material with the new quantity
+		 */
+		setMaterialQuantity(newMaterial) {
+			for (let i = 0, len = this.materials.length; i < len; i++) {
+				if (newMaterial.id === this.materials[i].id) {
+					newMaterial.name = this.materials[i].name
+					this.materials[i].quantity = newMaterial.quantity
+					this.updateMaterial(newMaterial)
+				}
+			}
+		},
+		/**
 		 * Add a new material to the materials array
 		 *
 		 * @param {string} name the name of the material to add
 		 */
 		addMaterial(name) {
 			const matName = name[0].toUpperCase() + name.slice(1)
-			const mat = {
-				id: this.nextMaterialId,
+			const tempMaterial = {
+				id: -1,
 				name: matName,
 				quantity: 20,
 			}
-			this.nextMaterialId++
-			this.materials.push(mat)
+			this.currentMaterialId = tempMaterial.id
+			this.currentMaterial = tempMaterial
+
+			this.saveMaterial()
+
+			this.materials.push(tempMaterial)
 		},
 		/**
 		 * Remove a quantity
@@ -207,6 +251,7 @@ export default {
 				 if (materialFromRemove.toLowerCase() === this.materials[i].name.toLowerCase()) {
 					 if (this.controlMagQuantity(this.materials[i], quantityToRemove)) {
 						this.materials[i].quantity = this.materials[i].quantity - quantityToRemove
+						this.updateMaterial(this.materials[i])
 					 }
 				 }
 			}
@@ -223,6 +268,35 @@ export default {
 				return false
 			} else {
 				return true
+			}
+		},
+		/**
+		 * Update an existing material on the server
+		 *
+		 * @param {object} material Material object
+		 */
+		async updateMaterial(material) {
+			this.updating = true
+			try {
+				await axios.put(generateUrl(`/apps/stationeryapp/updateMaterial/${material.id}`), material)
+			} catch (e) {
+				console.error(e)
+				showError(t('stationeryapp', 'Could not update the material'))
+			}
+			this.updating = false
+		},
+		/**
+		 * Check if the quantity in stock is sufficient
+		 *
+		 * @param {string} materialToReadd the material to remove
+		 * @param {number} quantityToReadd the quantity to remove
+		 */
+		readdQuantity(materialToReadd, quantityToReadd) {
+			for (let i = 0, len = this.materials.length; i < len; i++) {
+				 if (materialToReadd.toLowerCase() === this.materials[i].name.toLowerCase()) {
+					this.materials[i].quantity = (parseInt(this.materials[i].quantity) + parseInt(quantityToReadd))
+					this.updateMaterial(this.materials[i])
+				 }
 			}
 		},
 	},

@@ -30,7 +30,7 @@
 		"@nextcloud/event-bus": "^2.1.1",
 		"@nextcloud/l10n": "^1.4.1",
 		"@nextcloud/router": "^2.0.0",
-		"@nextcloud/vue": "^4.0.2",
+		"@nextcloud/vue": "^4.4.0",
 		"@vueform/slider": "^2.0.8",
 		"axios": "^0.26.0",
 		"eslint-plugin-import": "^2.25.3",

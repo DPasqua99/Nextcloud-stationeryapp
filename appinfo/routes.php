@@ -15,8 +15,9 @@ return [
        ['name' => 'action#show', 'url' => '/action/{id}', 'verb' => 'GET'],
        ['name' => 'action#create', 'url' => '/insertAction', 'verb' => 'POST'],
        ['name' => 'action#destroy', 'url' => '/deleteAction/{id}', 'verb' => 'DELETE'],
-       ['name' => 'material#getAllMaterials', 'url' => '/materials', 'verb' => 'GET'],
-       ['name' => 'material#insertMaterial', 'url' => '/material', 'verb' => 'POST'],
-       ['name' => 'material#updateMaterial', 'url' => '/updateMaterial/{id}', 'verb' => 'PUT'],       
+       ['name' => 'material#index', 'url' => '/materials', 'verb' => 'GET'],
+       ['name' => 'material#create', 'url' => '/insertMaterial', 'verb' => 'POST'],
+       ['name' => 'material#update', 'url' => '/updateMaterial/{id}', 'verb' => 'PUT'],
+       ['name' => 'material#destroy', 'url' => '/deleteMaterial/{id}', 'verb' => 'DELETE'],       
     ]
 ];

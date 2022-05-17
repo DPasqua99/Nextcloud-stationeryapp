@@ -1,5 +1,7 @@
 DA FARE
 
-->	[FATTO]		Cancellazione di un azione sia dal database che dal UI
+->	[FATTO]	Cancellazione di un azione sia dal database che dal UI
 
 ->	Gestione materiali
+
+->  Sistemare la modifica della quantità di un materiale
