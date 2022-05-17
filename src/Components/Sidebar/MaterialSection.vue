@@ -10,7 +10,7 @@
 				</AppNavigationCounter>
 			</template>
 			<template #actions>
-				<ActionButton icon="icon-edit" @click="setQuantity">
+				<ActionButton icon="icon-edit" @click="showSetQuantity(material.id)">
 					Edit
 				</ActionButton>
 				<ActionButton icon="icon-delete" @click="removeMaterials(material.id)">
@@ -19,6 +19,11 @@
 			</template>
 		</AppNavigationItem>
 		<AppNavigationNewItem title="Aggiungi Materiale" icon="icon-add" @new-item="addMaterials" />
+		<AppNavigationNewItem
+			v-if="setQuantity"
+			title="Modifica Quantità"
+			icon="icon-add"
+			@new-item="updateQuantity" />
 	</AppNavigationItem>
 </template>
 
@@ -43,17 +48,34 @@ export default {
 		},
 	},
 	data() {
+		return {
+			setQuantity: false,
+			newQuantity: null,
+			newMaterial: {
+				id: null,
+				name: null,
+				quantity: null,
+			},
+		}
 	},
 	methods: {
 		addMaterials(value) {
 			this.$emit('new-item', value)
 		},
 		removeMaterials(materialId) {
-			alert(materialId)
 			this.$emit('remove-material', materialId)
 		},
-		setQuantity() {
-			this.$emit('set-quantity')
+		updateQuantity(newQuantity) {
+			this.newMaterial.quantity = newQuantity
+			this.$emit('set-quantity', this.newMaterial)
+			this.closeSetQuantity()
+		},
+		showSetQuantity(materialId) {
+			this.newMaterial.id = materialId
+			this.setQuantity = true
+		},
+		closeSetQuantity() {
+			this.setQuantity = false
 		},
 	},
 }

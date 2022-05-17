@@ -7,7 +7,8 @@
 			<MaterialSection
 				:materials="materials"
 				@new-item="addMaterial"
-				@remove-material="removeMaterial" />
+				@remove-material="removeMaterial"
+				@set-quantity="setMaterialQuantity" />
 		</AppNavigation>
 		<AppContent>
 			<Table
@@ -67,7 +68,7 @@ export default {
 	computed: {
 	},
 	/**
-	 * Fetch list of actions when the component is loaded
+	 * Fetch list of actions and materials when the component is loaded
 	 */
 	async mounted() {
 		try {
@@ -204,6 +205,20 @@ export default {
 			} catch (e) {
 				console.error(e)
 				showError(t('stationeryapp', 'Could not delete the material'))
+			}
+		},
+		/**
+		 * Delete an action, remove it from the frontend and show a hint
+		 *
+		 * @param {object} newMaterial the material with the new quantity
+		 */
+		setMaterialQuantity(newMaterial) {
+			for (let i = 0, len = this.materials.length; i < len; i++) {
+				if (newMaterial.id === this.materials[i].id) {
+					newMaterial.name = this.materials[i].name
+					this.materials[i].quantity = newMaterial.quantity
+					this.updateMaterial(newMaterial)
+				}
 			}
 		},
 		/**
