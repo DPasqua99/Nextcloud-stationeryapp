@@ -49,9 +49,6 @@ class ActionController extends Controller {
 	* @param int $quantity
 	*/
 	public function create(string $name, string $material, int $quantity) {
-		print $name;
-		print $material;
-		print $quantity;
 		$action = new Action();
 		$action->setName($name);
 		$action->setQuantity($quantity);

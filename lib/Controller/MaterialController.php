@@ -49,7 +49,7 @@ class MaterialController extends Controller {
 		$material = new Material();
 		$material->setName($name);
 		$material->setQuantity($quantity);
-		return new DataResponse($this->mapper->insert($note));
+		return new DataResponse($this->mapper->insert($material));
 	}
 
 	/**
@@ -65,8 +65,8 @@ class MaterialController extends Controller {
 		} catch(Exception $e) {
 			return new DataResponse([], Http::STATUS_NOT_FOUND);
 		}
-		$action->setName($name);
-		$action->setQuantity($quantity);
+		$material->setName($name);
+		$material->setQuantity($quantity);
 		return new DataResponse($this->mapper->update($material));
 	}
 

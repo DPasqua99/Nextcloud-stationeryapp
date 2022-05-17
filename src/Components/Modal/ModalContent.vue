@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<Button class="fixed-right-bottom" @click="showModal">
-			Show Modal
+			Aggiungi Azione
 		</Button>
 		<Modal v-if="modal"
 			size="large"
@@ -120,9 +120,6 @@ export default {
 			this.modal = false
 		},
 		addAction(form) {
-			console.warn(form.actionName)
-			console.warn(form.actionMat)
-			console.warn(form.actionQuantity)
 			this.$emit('submit', form)
 			this.closeModal()
 		},
