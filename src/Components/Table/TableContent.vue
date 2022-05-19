@@ -1,36 +1,49 @@
 <template>
-	<tr>
-		<td class="lite-gray">
-			{{ actionName }}
-		</td>
-		<td class="lite-gray">
-			{{ mat }}
-		</td>
-		<td class="lite-gray">
-			{{ quantity }}
-		</td>
-		<td class="lite-gray">
-			{{ date }}
-		</td>
-		<td class="lite-gray">
-			<Actions>
+	<ul>
+		<ListItem
+			:title="actionName"
+			:bold="true"
+			:force-display-actions="true"
+			:details="date"
+			:counter-number="quantity"
+			counter-type="highlighted">
+			<template #icon>
+				<Avatar
+					:size="44"
+					:display-name="actionName" />
+			</template>
+			<template #subtitle>
+				{{ mat }}
+			</template>
+			<template #counter>
+				<CounterBubble>
+					{{ quantity }}
+				</CounterBubble>
+			</template>
+			<template #actions>
 				<ActionButton icon="icon-delete" @click="deleteAction(actionId)">
 					Delete
 				</ActionButton>
-			</Actions>
-		</td>
-	</tr>
+			</template>
+		</ListItem>
+	</ul>
 </template>
 
 <script>
-import Actions from '@nextcloud/vue/dist/Components/Actions'
+// import Actions from '@nextcloud/vue/dist/Components/Actions'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import ListItem from '@nextcloud/vue/dist/Components/ListItem'
+import CounterBubble from '@nextcloud/vue/dist/Components/CounterBubble'
+import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 
 export default {
 	name: 'TableContent',
 	components: {
-		Actions,
+		// Actions,
 		ActionButton,
+		ListItem,
+		CounterBubble,
+		Avatar,
 	},
 	props: {
 		actionId: {

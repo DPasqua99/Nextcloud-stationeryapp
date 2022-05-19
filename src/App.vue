@@ -1,8 +1,12 @@
 <template>
-	<Content :class="{'icon-loading': loading}" app-name="stationeryapp">
+	<Content :class="{'icon-loading': loading}" app-name="Magazzino">
 		<AppNavigation
 			title="Filtri">
-			<FilterSection />
+			<FilterSection
+				@filterAll="filterAll"
+				@filterToday="filterToday"
+				@filterLastWeek="filterLastWeek"
+				@filterLastMonth="filterLastMonth" />
 			<AppNavigationSpacer />
 			<MaterialSection
 				:materials="materials"
@@ -11,8 +15,16 @@
 				@set-quantity="setMaterialQuantity" />
 		</AppNavigation>
 		<AppContent>
-			<Table
-				:actions="actions"
+			<TitleTable
+				:title="title" />
+			<TableContent
+				v-for="action in actions"
+				:key="action.id"
+				:action-id="action.id"
+				:action-name="action.name"
+				:mat="action.material"
+				:quantity="action.quantity"
+				:date="action.date"
 				@delete="deleteAction" />
 			<ModalContent
 				:materials="materials"
@@ -26,10 +38,11 @@ import Content from '@nextcloud/vue/dist/Components/Content'
 import AppContent from '@nextcloud/vue/dist/Components/AppContent'
 import AppNavigation from '@nextcloud/vue/dist/Components/AppNavigation'
 import AppNavigationSpacer from '@nextcloud/vue/dist/Components/AppNavigationSpacer'
-import Table from './Components/Table/Table.vue'
+import TableContent from './Components/Table/TableContent.vue'
 import MaterialSection from './Components/Sidebar/MaterialSection.vue'
 import FilterSection from './Components/Sidebar/FilterSection.vue'
 import ModalContent from './Components/Modal/ModalContent.vue'
+import TitleTable from './Components/Table/TitleTable.vue'
 import moment from 'moment'
 
 import '@nextcloud/dialogs/styles/toast.scss'
@@ -44,10 +57,11 @@ export default {
 		AppContent,
 		AppNavigation,
 		AppNavigationSpacer,
-		Table,
+		TableContent,
 		MaterialSection,
 		FilterSection,
 		ModalContent,
+		TitleTable,
 	},
 	data() {
 		return {
@@ -63,6 +77,7 @@ export default {
 			currentMaterial: null,
 			actions: [],
 			materials: [],
+			title: 'Tutto',
 		}
 	},
 	computed: {
@@ -298,6 +313,18 @@ export default {
 					this.updateMaterial(this.materials[i])
 				 }
 			}
+		},
+		filterAll() {
+			this.title = 'Tutti'
+		},
+		filterToday() {
+			this.title = 'Oggi'
+		},
+		filterLastWeek() {
+			this.title = 'Ultima Settimana'
+		},
+		filterLastMonth() {
+			this.title = 'Ultimo Mese'
 		},
 	},
 }
