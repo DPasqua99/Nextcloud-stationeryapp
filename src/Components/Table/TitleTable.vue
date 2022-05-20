@@ -12,7 +12,7 @@ export default {
 	props: {
 		title: {
 			type: String,
-			default: 'Tutto',
+			default: 'Tutti',
 		},
 	},
 }

@@ -1,5 +1,8 @@
 <template>
-	<AppNavigationItem title="Materiale" :allow-collapse="true" :open="true">
+	<AppNavigationItem
+		title="Materiale"
+		:allow-collapse="true"
+		:open="true">
 		<AppNavigationItem
 			v-for="material in materials"
 			:key="material.id"
@@ -80,3 +83,10 @@ export default {
 	},
 }
 </script>
+
+<style scoped>
+	.bottom{
+		position: absolute;
+		bottom: 0;
+	}
+</style>

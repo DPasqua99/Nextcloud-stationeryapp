@@ -17,8 +17,8 @@ export default {
 	},
 	data() {
 		return {
-			activeAll: false,
-			activeToday: true,
+			activeAll: true,
+			activeToday: false,
 			activeLastWeek: false,
 			activeLastMonth: false,
 		}
@@ -29,28 +29,28 @@ export default {
 			this.activeToday = false
 			this.activeLastWeek = false
 			this.activeLastMonth = false
-			this.$emits('filterAll')
+			this.$emit('filter-all')
 		},
 		activeFilterToday() {
 			this.activeAll = false
 			this.activeToday = true
 			this.activeLastWeek = false
 			this.activeLastMonth = false
-			this.$emits('filterToday')
+			this.$emit('filter-today')
 		},
 		activeFilterLastWeek() {
 			this.activeAll = false
 			this.activeToday = false
 			this.activeLastWeek = true
 			this.activeLastMonth = false
-			this.$emits('filterLastWeek')
+			this.$emit('filter-last-week')
 		},
 		activeFilterLastMonth() {
 			this.activeAll = false
 			this.activeToday = false
 			this.activeLastWeek = false
 			this.activeLastMonth = true
-			this.$emits('filterLastMonth')
+			this.$emit('filter-last-month')
 		},
 	},
 }

@@ -1,19 +1,21 @@
 <template>
 	<Content :class="{'icon-loading': loading}" app-name="Magazzino">
-		<AppNavigation
-			title="Filtri">
-			<FilterSection
-				@filterAll="filterAll"
-				@filterToday="filterToday"
-				@filterLastWeek="filterLastWeek"
-				@filterLastMonth="filterLastMonth" />
-			<AppNavigationSpacer />
-			<MaterialSection
-				:materials="materials"
-				@new-item="addMaterial"
-				@remove-material="removeMaterial"
-				@set-quantity="setMaterialQuantity" />
-		</AppNavigation>
+		<ul>
+			<AppNavigation
+				title="Filtri">
+				<FilterSection
+					@filter-all="filterAll"
+					@filter-today="filterToday"
+					@filter-last-week="filterLastWeek"
+					@filter-last-month="filterLastMonth" />
+				<AppNavigationSpacer />
+				<MaterialSection
+					:materials="materials"
+					@new-item="addMaterial"
+					@remove-material="removeMaterial"
+					@set-quantity="setMaterialQuantity" />
+			</AppNavigation>
+		</ul>
 		<AppContent>
 			<TitleTable
 				:title="title" />
@@ -75,9 +77,10 @@ export default {
 			form: null,
 			currentAction: null,
 			currentMaterial: null,
+			allActions: [],
 			actions: [],
 			materials: [],
-			title: 'Tutto',
+			title: 'Tutti',
 		}
 	},
 	computed: {
@@ -89,6 +92,7 @@ export default {
 		try {
 			const responseActions = await axios.get(generateUrl('/apps/stationeryapp/actions'))
 			this.actions = responseActions.data
+			this.allActions = this.actions
 			const responseMaterials = await axios.get(generateUrl('/apps/stationeryapp/materials'))
 			this.materials = responseMaterials.data
 		} catch (e) {
@@ -154,6 +158,7 @@ export default {
 				const index = this.actions.findIndex((match) => match.id === this.currentActionId)
 				this.$set(this.actions, index, response.data)
 				this.currentActionId = response.data.id
+				this.allActions = this.actions
 			} catch (e) {
 				console.error(e)
 				showError(t('stationeryapp', 'Could not create the action'))
@@ -198,6 +203,7 @@ export default {
 				if (this.currentActionId === action.id) {
 					this.currentActionId = null
 				}
+				this.allActions = this.actions
 				showSuccess(t('stationeryapp', 'Action deleted'))
 			} catch (e) {
 				console.error(e)
@@ -314,17 +320,67 @@ export default {
 				 }
 			}
 		},
+		/**
+		 * Filter all the actions
+		 */
 		filterAll() {
 			this.title = 'Tutti'
+			this.actions = this.allActions
 		},
+		/**
+		 * Filter the actions of today
+		 */
 		filterToday() {
 			this.title = 'Oggi'
+
+			const todayActions = []
+			this.actions = []
+
+			for (let i = 0, len = this.allActions.length; i < len; i++) {
+				const dateM = moment(this.allActions[i].date, 'YYYY/MM/DD h:mm').utc(true)
+				if (dateM.isSame(moment(), 'day')) {
+					todayActions.push(this.allActions[i])
+				}
+			}
+			this.actions = todayActions
 		},
+		/**
+		 * Filter last week actions
+		 */
 		filterLastWeek() {
 			this.title = 'Ultima Settimana'
+
+			const lastWeekActions = []
+			this.actions = []
+			const lastWeek = moment().subtract(1, 'weeks')
+			const yesterday = moment().subtract(1, 'days')
+
+			for (let i = 0, len = this.allActions.length; i < len; i++) {
+				const dateM = moment(this.allActions[i].date, 'YYYY/MM/DD h:mm').utc(true)
+				if (dateM.isBefore(yesterday) && dateM.isAfter(lastWeek)) {
+					lastWeekActions.push(this.allActions[i])
+				}
+			}
+			this.actions = lastWeekActions
 		},
+		/**
+		 * Filter last month actions
+		 */
 		filterLastMonth() {
 			this.title = 'Ultimo Mese'
+
+			const lastMonthActions = []
+			this.actions = []
+			const lastMonth = moment().subtract(1, 'month')
+			const yesterday = moment().subtract(1, 'days')
+
+			for (let i = 0, len = this.allActions.length; i < len; i++) {
+				const dateM = moment(this.allActions[i].date, 'YYYY/MM/DD h:mm').utc(true)
+				if (dateM.isBefore(yesterday) && dateM.isAfter(lastMonth)) {
+					lastMonthActions.push(this.allActions[i])
+				}
+			}
+			this.actions = lastMonthActions
 		},
 	},
 }
