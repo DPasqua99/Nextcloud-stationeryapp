@@ -3,17 +3,17 @@
 		<ul>
 			<AppNavigation
 				title="Filtri">
-				<FilterSection
-					@filter-all="filterAll"
-					@filter-today="filterToday"
-					@filter-last-week="filterLastWeek"
-					@filter-last-month="filterLastMonth" />
 				<AppNavigationSpacer />
 				<MaterialSection
 					:materials="materials"
 					@new-item="addMaterial"
 					@remove-material="removeMaterial"
 					@set-quantity="setMaterialQuantity" />
+				<FilterSection
+					@filter-all="filterAll"
+					@filter-today="filterToday"
+					@filter-last-week="filterLastWeek"
+					@filter-last-month="filterLastMonth" />
 			</AppNavigation>
 		</ul>
 		<AppContent>
@@ -123,10 +123,15 @@ export default {
 			this.currentAction = tempAction
 			this.currentActionId = tempAction.id
 
-			this.removeQuantity(tempAction.quantity, tempAction.material)
-
-			this.saveAction()
-			this.actions.push(tempAction)
+			for (let i = 0, len = this.materials.length; i < len; i++) {
+				 if (tempAction.material.toLowerCase() === this.materials[i].name.toLowerCase()) {
+					 if (this.controlMagQuantity(this.materials[i], tempAction.quantity)) {
+						this.removeQuantity(tempAction.quantity, tempAction.material)
+						this.saveAction()
+						this.actions.push(tempAction)
+					 }
+				 }
+			}
 		},
 		/**
 		 * Action tiggered when clicking the save button
@@ -270,11 +275,9 @@ export default {
 		removeQuantity(quantityToRemove, materialFromRemove) {
 			for (let i = 0, len = this.materials.length; i < len; i++) {
 				 if (materialFromRemove.toLowerCase() === this.materials[i].name.toLowerCase()) {
-					 if (this.controlMagQuantity(this.materials[i], quantityToRemove)) {
-						this.materials[i].quantity = this.materials[i].quantity - quantityToRemove
-						this.updateMaterial(this.materials[i])
-					 }
-				 }
+					this.materials[i].quantity = this.materials[i].quantity - quantityToRemove
+					this.updateMaterial(this.materials[i])
+				}
 			}
 		},
 		/**

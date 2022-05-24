@@ -83,10 +83,3 @@ export default {
 	},
 }
 </script>
-
-<style scoped>
-	.bottom{
-		position: absolute;
-		bottom: 0;
-	}
-</style>

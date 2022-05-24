@@ -1,5 +1,5 @@
 <template>
-	<AppNavigationItem title="Azioni">
+	<AppNavigationItem title="Azioni" class="bottom">
 		<AppNavigationItem :class="{active: activeAll}" title="Tutti" @click="activeFilterAll" />
 		<AppNavigationItem :class="{active: activeToday}" title="Oggi" @click="activeFilterToday" />
 		<AppNavigationItem :class="{active: activeLastWeek}" title="Ultimi 7 giorni" @click="activeFilterLastWeek" />
@@ -55,3 +55,11 @@ export default {
 	},
 }
 </script>
+
+<style scoped>
+	.bottom{
+		position: fixed;
+		bottom: 1%;
+		overflow: hidden;
+	}
+</style>
